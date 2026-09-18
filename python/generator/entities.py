@@ -163,7 +163,7 @@ class EntityGenerator:
         columns = ["decline_code", "decline_reason", "decline_type", "is_retryable", "recommended_action"]
         return pd.DataFrame(data, columns=columns)
 
-    def generate_date_dimension(self, start_date: str = "2024-01-01", end_date: str = "2024-12-31") -> pd.DataFrame:
+    def generate_date_dimension(self, start_date: str = "2022-01-01", end_date: str = "2026-12-31") -> pd.DataFrame:
         """Generates full calendar dimension with financial periods."""
         logger.info("Generating date dimension from %s to %s...", start_date, end_date)
         dates = pd.date_range(start=start_date, end=end_date, freq="D")
