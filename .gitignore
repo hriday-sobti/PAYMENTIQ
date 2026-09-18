@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments & Secrets
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Large Datasets & Database Storage
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.duckdb
+*.duckdb.wal
+*.sqlite
+*.sqlite3
+*.csv
+*.parquet
+
+# PostgreSQL Local Cluster
+.local/
+data/pgdata/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Power BI User Cache
+*.pbix.temp
+*.pbit.temp
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

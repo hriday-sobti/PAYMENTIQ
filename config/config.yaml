@@ -1,0 +1,142 @@
+# PAYMENTIQ Configuration Parameters
+project:
+  name: "PAYMENTIQ"
+  version: "1.0.0"
+  description: "End-to-End Payment Transaction Intelligence & Business Analytics Platform"
+
+scales:
+  DEV:
+    transactions: 100000
+    customers: 5000
+    merchants: 250
+    start_date: "2024-01-01"
+    end_date: "2024-12-31"
+  TEST:
+    transactions: 1000000
+    customers: 40000
+    merchants: 1000
+    start_date: "2024-01-01"
+    end_date: "2024-12-31"
+  FULL:
+    transactions: 5000000
+    customers: 150000
+    merchants: 2500
+    start_date: "2024-01-01"
+    end_date: "2024-12-31"
+
+active_scale: "DEV"
+random_seed: 42
+chunk_size: 100000
+
+database:
+  host: "127.0.0.1"
+  port: 5433
+  name: "paymentiq_dw"
+  user: "postgres"
+  duckdb_path: "data/processed/paymentiq.duckdb"
+
+payment_methods:
+  - name: "Credit Card"
+    share: 0.45
+    auth_rate_baseline: 0.885
+    interchange_rate_bps: 165
+    scheme_fee_bps: 14
+    acquirer_fee_bps: 25
+  - name: "Debit Card"
+    share: 0.30
+    auth_rate_baseline: 0.915
+    interchange_rate_bps: 65
+    scheme_fee_bps: 12
+    acquirer_fee_bps: 20
+  - name: "Digital Wallet"
+    share: 0.15
+    auth_rate_baseline: 0.932
+    interchange_rate_bps: 140
+    scheme_fee_bps: 15
+    acquirer_fee_bps: 22
+  - name: "BNPL"
+    share: 0.07
+    auth_rate_baseline: 0.820
+    interchange_rate_bps: 240
+    scheme_fee_bps: 20
+    acquirer_fee_bps: 50
+  - name: "Instant Bank Transfer"
+    share: 0.03
+    auth_rate_baseline: 0.945
+    interchange_rate_bps: 35
+    scheme_fee_bps: 8
+    acquirer_fee_bps: 15
+
+merchant_categories:
+  - code: "5411"
+    name: "Grocery & Supermarkets"
+    mean_amount: 48.50
+    std_amount: 0.55
+    dispute_rate_bps: 8
+  - code: "5812"
+    name: "Restaurants & Dining"
+    mean_amount: 38.00
+    std_amount: 0.65
+    dispute_rate_bps: 14
+  - code: "5311"
+    name: "Department Stores & Retail"
+    mean_amount: 82.50
+    std_amount: 0.75
+    dispute_rate_bps: 22
+  - code: "5732"
+    name: "Consumer Electronics"
+    mean_amount: 245.00
+    std_amount: 0.90
+    dispute_rate_bps: 68
+  - code: "7011"
+    name: "Hotels & Travel"
+    mean_amount: 320.00
+    std_amount: 0.85
+    dispute_rate_bps: 52
+  - code: "4722"
+    name: "Airlines & Transit"
+    mean_amount: 285.00
+    std_amount: 0.80
+    dispute_rate_bps: 45
+  - code: "5999"
+    name: "Digital Goods & Gaming"
+    mean_amount: 24.50
+    std_amount: 0.95
+    dispute_rate_bps: 95
+  - code: "5651"
+    name: "Apparel & Fashion"
+    mean_amount: 72.00
+    std_amount: 0.70
+    dispute_rate_bps: 30
+
+decline_reasons:
+  soft:
+    - code: "51"
+      reason: "Insufficient Funds"
+      share: 0.42
+      retryable: true
+    - code: "91"
+      reason: "Issuer System Unavailable"
+      share: 0.18
+      retryable: true
+    - code: "19"
+      reason: "Network Timeout"
+      share: 0.08
+      retryable: true
+  hard:
+    - code: "05"
+      reason: "Do Not Honor"
+      share: 0.16
+      retryable: false
+    - code: "54"
+      reason: "Expired Card"
+      share: 0.07
+      retryable: false
+    - code: "14"
+      reason: "Invalid Card Number"
+      share: 0.05
+      retryable: false
+    - code: "41"
+      reason: "Lost / Stolen Card"
+      share: 0.04
+      retryable: false
