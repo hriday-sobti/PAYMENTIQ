@@ -297,13 +297,13 @@ The platform implements a pure star schema in PostgreSQL and Power BI:
 ## 19. Unified KPI Framework
 - Single source of truth cataloged in `config/kpi_definitions.yaml` and `documentation/KPI_DICTIONARY.md`.
 - Core Metrics:
-  - **Gross Transaction Value (GTV):** $\sum \text{amount}$ for all attempted transactions.
-  - **Settled Transaction Value (STV):** $\sum \text{amount}$ for transactions where `auth_status = 'Approved'`.
+  - **Gross Transaction Value (GTV):** $\sum \text{Amount}$ for all attempted transactions.
+  - **Settled Transaction Value (STV):** $\sum \text{Amount}$ for transactions where auth_status = 'Approved'.
   - **Authorization Rate (Auth Rate):** $\frac{\text{Count of Approved Transactions}}{\text{Count of Total Attempted Transactions}} \times 100\%$.
-  - **Gross Revenue (MDR):** $\sum \text{processing\_fee}$ earned from merchants.
-  - **Net Revenue:** $\text{Gross Revenue} - \sum (\text{interchange\_fee} + \text{scheme\_fee})$.
-  - **Net Contribution:** $\text{Net Revenue} - \sum (\text{chargeback\_loss} + \text{operational\_dispute\_costs})$.
-  - **Transaction Value at Risk (TVaR):** $\sum \text{amount}$ for declined/failed transactions categorized by recoverability.
+  - **Gross Revenue (MDR):** $\sum \text{Processing Fee}$ earned from merchants.
+  - **Net Revenue:** $\text{Gross Revenue} - \sum (\text{Interchange Fee} + \text{Scheme Fee})$.
+  - **Net Contribution:** $\text{Net Revenue} - \sum (\text{Chargeback Losses} + \text{Dispute Costs})$.
+  - **Transaction Value at Risk (TVaR):** $\sum \text{Amount}$ for declined or failed transactions categorized by recoverability.
   - **Chargeback Rate:** $\frac{\text{Count of Chargebacks}}{\text{Count of Approved Transactions}} \times 100\%$.
 
 ---
@@ -359,8 +359,8 @@ The platform implements a pure star schema in PostgreSQL and Power BI:
 ## 25. Statistical Methodology
 - **Formal Hypothesis Test:**
   - *Research Question:* Does implementing 3D-Secure (3DS) authentication cause a statistically and commercially significant change in authorization rates compared to frictionless non-3DS transactions?
-  - *Null Hypothesis ($H_0$):* $p_{3DS} = p_{non3DS}$ (no difference in population authorization proportions).
-  - *Alternative Hypothesis ($H_1$):* $p_{3DS} \ne p_{non3DS}$.
+  - *Null Hypothesis ($H_0$):* $p_{\text{3DS}} = p_{\text{non3DS}}$ (no difference in population authorization proportions).
+  - *Alternative Hypothesis ($H_1$):* $p_{\text{3DS}} \ne p_{\text{non3DS}}$.
   - *Statistical Test:* Two-proportion Z-test with $\alpha = 0.01$.
   - *Effect Size:* Cohen's $h$ calculated to distinguish statistical significance from practical business materiality.
 
@@ -401,8 +401,8 @@ The platform implements a pure star schema in PostgreSQL and Power BI:
 
 ## 29. Data Reconciliation Strategy
 - Automated reconciliation matrix verifying that across all layers:
-  $$\text{Row Count}_{\text{Raw}} = \text{Row Count}_{\text{Staging}} = \text{Row Count}_{\text{DW}} = \text{Row Count}_{\text{PowerBI}}$$
-  $$\sum \text{GTV}_{\text{Python}} = \sum \text{GTV}_{\text{PostgreSQL}} = \sum \text{GTV}_{\text{PowerBI}} = \sum \text{GTV}_{\text{Executive Report}}$$
+  - $\text{Row Count (Raw)} = \text{Row Count (Staging)} = \text{Row Count (PostgreSQL)} = \text{Row Count (Power BI)}$
+  - $\text{GTV (Python)} = \text{GTV (PostgreSQL)} = \text{GTV (Power BI)} = \text{GTV (Executive Report)}$
 - Allowed variance: **0.00%**. Any discrepancy halts the delivery pipeline.
 
 ---

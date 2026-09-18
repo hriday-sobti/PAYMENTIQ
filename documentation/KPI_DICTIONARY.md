@@ -10,15 +10,15 @@
 
 | KPI ID | KPI Name | Mathematical Formula | Business Grain | SQL Implementation | Power BI DAX Implementation |
 |---|---|---|---|---|---|
-| **KPI_01** | Gross Transaction Value (GTV) | $\sum \text{amount}$ | One attempt | `SUM(amount)` | `SUM(fact_transactions[amount])` |
-| **KPI_02** | Settled Transaction Value (STV) | $\sum (\text{amount} \times \mathbb{I}_{\text{Approved}})$ | One attempt | `SUM(CASE WHEN auth_status = 'Approved' THEN amount ELSE 0 END)` | `CALCULATE(SUM(fact_transactions[amount]), fact_transactions[auth_status] = "Approved")` |
+| **KPI_01** | Gross Transaction Value (GTV) | $\sum \text{Amount}$ | One attempt | `SUM(amount)` | `SUM(fact_transactions[amount])` |
+| **KPI_02** | Settled Transaction Value (STV) | $\sum (\text{Amount} \times \mathbb{I}_{\text{Approved}})$ | One attempt | `SUM(CASE WHEN auth_status = 'Approved' THEN amount ELSE 0 END)` | `CALCULATE(SUM(fact_transactions[amount]), fact_transactions[auth_status] = "Approved")` |
 | **KPI_03** | Total Transaction Volume (TTV) | $\sum 1$ | One attempt | `COUNT(*)` | `COUNTROWS(fact_transactions)` |
 | **KPI_04** | Authorization Rate % | $\frac{\text{Approved Count}}{\text{Total Attempts}} \times 100\%$ | Portfolio / Segment | `100.0 * COUNT(CASE WHEN auth_status = 'Approved' THEN 1 END) / COUNT(*)` | `DIVIDE([Approved Transactions], [Total Transactions], 0)` |
-| **KPI_05** | Gross Revenue (MDR) | $\sum \text{processing\_fee}$ | Settled transaction | `SUM(processing_fee)` | `SUM(fact_transactions[processing_fee])` |
+| **KPI_05** | Gross Revenue (MDR) | $\sum \text{Processing Fee}$ | Settled transaction | `SUM(processing_fee)` | `SUM(fact_transactions[processing_fee])` |
 | **KPI_06** | Net Revenue | $\text{Gross Revenue} - \sum (\text{Interchange} + \text{Scheme})$ | Settled transaction | `SUM(net_revenue)` | `[Gross Revenue] - [Interchange Cost] - [Scheme Cost]` |
 | **KPI_07** | Net Contribution | $\text{Net Revenue} - \sum \text{Chargeback Losses}$ | Portfolio / Merchant | `SUM(net_contribution)` | `[Net Revenue] - [Chargeback Losses]` |
 | **KPI_08** | Net Take Rate (BPS) | $\frac{\text{Net Revenue}}{\text{Settled STV}} \times 10,000$ | Portfolio / Merchant | `10000.0 * SUM(net_revenue) / SUM(settled_gtv)` | `DIVIDE([Net Revenue] * 10000, [Settled Transaction Value (STV)], 0)` |
-| **KPI_09** | Transaction Value at Risk (TVaR) | $\sum (\text{amount} \times \mathbb{I}_{\text{Not Approved}})$ | One attempt | `SUM(CASE WHEN auth_status != 'Approved' THEN amount ELSE 0 END)` | `CALCULATE(SUM(fact_transactions[amount]), fact_transactions[auth_status] <> "Approved")` |
+| **KPI_09** | Transaction Value at Risk (TVaR) | $\sum (\text{Amount} \times \mathbb{I}_{\text{Not Approved}})$ | One attempt | `SUM(CASE WHEN auth_status != 'Approved' THEN amount ELSE 0 END)` | `CALCULATE(SUM(fact_transactions[amount]), fact_transactions[auth_status] <> "Approved")` |
 | **KPI_10** | Recoverable Revenue Opportunity | $\sum \text{Soft Decline GTV} \times 2.5\% \times 45\%$ | Aggregate segment | `SUM(CASE WHEN is_soft_decline THEN amount * 0.025 * 0.45 ELSE 0 END)` | `SUM(fact_transactions[soft_decline_amount]) * 0.025 * 0.45` |
 | **KPI_11** | Chargeback Ratio (BPS) | $\frac{\text{Dispute Count}}{\text{Approved Volume}} \times 10,000$ | Merchant / Category | `10000.0 * COUNT(d.dispute_id) / COUNT(DISTINCT t.transaction_id)` | `DIVIDE([Dispute Count] * 10000, [Approved Transactions], 0)` |
 | **KPI_12** | Contribution Margin % | $\frac{\text{Net Contribution}}{\text{Net Revenue}} \times 100\%$ | Merchant / Portfolio | `100.0 * SUM(net_contribution) / SUM(net_revenue)` | `DIVIDE([Net Contribution], [Net Revenue], 0)` |

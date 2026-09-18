@@ -32,6 +32,11 @@ PAYMENTIQ delivers an end-to-end analytical data platform spanning the entire in
 - **Grounded Natural-Language Analytics:** "Ask PAYMENTIQ" conversational interface with AST query validation, strict SQL safety, and zero-hallucination metric grounding.
 - **Multi-Layer Reconciliation:** Verified 0.00% financial drift across all storage and reporting layers.
 
+<p align="center">
+  <img src="reports/figures/eda_monthly_volume_trend.png" width="720" alt="2024 Monthly Volume & Net Revenue Trend" />
+  <br/><em>Figure: 2024 Monthly Settled Volume ($M) and Net Retained Revenue ($K) Trajectory</em>
+</p>
+
 ---
 
 ## 2. Platform Architecture & Data Flow
@@ -139,22 +144,22 @@ All metrics strictly obey the centralized contracts defined in [`config/kpi_defi
 
 | Metric | Business Definition | Mathematical Formula | 2024 Verified Value |
 |---|---|---|---|
-| **Gross Transaction Value (GTV)** | Total initiated checkout volume | $\sum \text{amount}$ | **$134,531,743.69** |
-| **Settled Volume (STV)** | Successfully authorized volume | $\sum (\text{amount} \times \mathbb{I}_{\text{Approved}})$ | **$121,120,030.80** |
+| **Gross Transaction Value (GTV)** | Total initiated checkout volume | $\sum \text{Amount}$ | **$134,531,743.69** |
+| **Settled Volume (STV)** | Successfully authorized volume | $\sum (\text{Amount} \times \mathbb{I}_{\text{Approved}})$ | **$121,120,030.80** |
 | **Total Transaction Volume** | Count of all transaction attempts | $\sum 1$ | **1,000,000 attempts** |
 | **Approved Transactions** | Count of successful authorizations | $\sum \mathbb{I}_{\text{Approved}}$ | **911,844 approvals** |
 | **Authorization Rate %** | Operational gateway conversion rate | $\frac{\text{Approved}}{\text{Total}} \times 100\%$ | **91.18%** |
-| **Gross Revenue (MDR)** | Gross fees billed to merchants | $\sum \text{processing\_fee}$ | **$2,621,500.73** |
-| **Interchange Cost** | Pass-through fees paid to issuing banks | $\sum \text{interchange\_fee}$ | **$1,637,102.62** |
-| **Scheme Assessment Cost** | Pass-through fees paid to Visa/MC | $\sum \text{scheme\_fee}$ | **$180,925.51** |
+| **Gross Revenue (MDR)** | Gross fees billed to merchants | $\sum \text{Processing Fee}$ | **$2,621,500.73** |
+| **Interchange Cost** | Pass-through fees paid to issuing banks | $\sum \text{Interchange Fee}$ | **$1,637,102.62** |
+| **Scheme Assessment Cost** | Pass-through fees paid to Visa/MC | $\sum \text{Scheme Fee}$ | **$180,925.51** |
 | **Net Retained Revenue** | Retained processing margin | $\text{Gross Revenue} - \text{Pass Throughs}$ | **$803,472.60** |
 | **Net Take Rate (BPS)** | Retained margin basis points | $\frac{\text{Net Revenue}}{\text{Settled STV}} \times 10,000$ | **66.3 bps** |
 | **Net Contribution** | Retained profit after chargeback losses | $\text{Net Revenue} - \sum \text{Dispute Losses}$ | **$647,055.64** |
 | **Contribution Margin %** | Share of net revenue retained as profit| $\frac{\text{Net Contribution}}{\text{Net Revenue}} \times 100\%$ | **80.53%** |
-| **Value at Risk (TVaR)** | Gross uncaptured failed checkout volume| $\sum (\text{amount} \times \mathbb{I}_{\text{Not Approved}})$ | **$13,411,712.89** |
+| **Value at Risk (TVaR)** | Gross uncaptured failed checkout volume| $\sum (\text{Amount} \times \mathbb{I}_{\text{Not Approved}})$ | **$13,411,712.89** |
 | **Recoverable Net Leakage** | Addressable margin from smart retries | $\text{Soft GTV} \times 2.5\% \times 45\%$ | **$103,334.06** |
 | **Chargeback Dispute Rate** | Dispute frequency in basis points | $\frac{\text{Disputes}}{\text{Approved}} \times 10,000$ | **12.17 bps** (Compliant) |
-| **Average Network Latency** | End-to-end authorization round trip | $\text{Mean}(\text{latency\_ms})$ | **201.0 ms** |
+| **Average Network Latency** | End-to-end authorization round trip | $\text{Mean}(\text{Latency})$ | **201.0 ms** |
 
 ---
 
@@ -165,9 +170,27 @@ All metrics strictly obey the centralized contracts defined in [`config/kpi_defi
 - **Soft Declines** (Codes `51` Insufficient Funds, `91` Issuer Unavailable, `19` Network Timeout) represent **68.5% ($9.19M)** of total declined value.
 - Implementing automated retry scheduling with a 24-hour balance-aware delay unlocks an estimated **+$103,334 in direct net revenue**.
 
+<p align="center">
+  <img src="reports/figures/payment_performance_funnel.png" width="700" alt="Payment Performance Funnel" />
+  <br/><em>Figure 1: PAYMENTIQ End-to-End Authorization & Retention Conversion Funnel</em>
+</p>
+<p align="center">
+  <img src="reports/figures/revenue_leakage_waterfall.png" width="700" alt="Revenue Leakage Waterfall" />
+  <br/><em>Figure 2: Financial Volume Waterfall & Addressable Value at Risk (TVaR)</em>
+</p>
+
 ### 2. Customer RFM & 12-Month Cohort Retention
 - Analysis of 40,000 active cardholders identifies strong Pareto value concentration: **Champions** and **Loyal Customers** represent **28.1% of cardholders** but generate **58.4% of settled volume** and **61.2% of net contribution**.
 - 12-month triangular cohort retention analysis reveals acquisition retention drops from 100% in Month 0 to 42% in Month 1, stabilizing into a highly predictable recurring baseline of **18% to 22%** from Month 4 through Month 12.
+
+<p align="center">
+  <img src="reports/figures/customer_cohort_retention.png" width="700" alt="Customer Cohort Retention Heatmap" />
+  <br/><em>Figure 3: 12-Month Customer Acquisition Cohort Activity Retention Triangle</em>
+</p>
+<p align="center">
+  <img src="reports/figures/customer_rfm_segments.png" width="700" alt="Customer RFM Segments" />
+  <br/><em>Figure 4: RFM Behavioral Segment Contribution to Settled Transaction Volume</em>
+</p>
 
 ### 3. Merchant Economics & 4-Quadrant Opportunity Matrix
 - Across 1,000 contracted merchants, portfolio concentration is low (Herfindahl-Hirschman Index = **44.3**).
@@ -177,26 +200,51 @@ All metrics strictly obey the centralized contracts defined in [`config/kpi_defi
   3. **Margin Drag (118 merchants):** High volume, below-median margin $\rightarrow$ Renegotiate from flat-rate to Interchange Plus (IC+) pricing (estimated uplift: **+$45K contribution**).
   4. **High Risk (20 merchants):** Dispute rates approaching 90 bps $\rightarrow$ Mandate 3DS and establish 10% rolling collateral reserves.
 
+<p align="center">
+  <img src="reports/figures/merchant_opportunity_matrix.png" width="700" alt="Merchant Opportunity Matrix" />
+  <br/><em>Figure 5: 4-Quadrant Merchant Opportunity Matrix (Volume vs. Contribution Margin %)</em>
+</p>
+
 ### 4. Machine Learning: Unsupervised Anomaly Detection
 - Trained an **Isolation Forest** tree ensemble on normalized feature vectors without ground-truth labels.
 - Evaluated against latent fraud and chargeback events, achieving an Area Under the Precision-Recall Curve (PR-AUC) of **0.502** and successfully isolating card-testing attacks ($1.50–$3.50 micro-charges) and high-ticket off-peak cross-border transactions.
 
+<p align="center">
+  <img src="reports/figures/anomaly_detection_eval.png" width="700" alt="Anomaly Detection Evaluation" />
+  <br/><em>Figure 6: Isolation Forest Anomaly Detection Precision-Recall Curve & Score Separation</em>
+</p>
+
 ### 5. Inferential Statistics: 3D-Secure Authorization Lift
 - Conducted a formal **Two-Sample Pooled Proportion Z-Test** on Card-Not-Present transactions:
-  - **Sample Sizes:** $n_{3DS} = 408,402$ vs. $n_{\text{Non-3DS}} = 191,355$.
-  - **Empirical Authorization Rates:** $p_{3DS} = 93.19\%$ vs. $p_{\text{Non-3DS}} = 89.77\%$.
+  - **Sample Sizes:** $n_{\text{3DS}} = 408,402$ vs. $n_{\text{Non-3DS}} = 191,355$.
+  - **Empirical Authorization Rates:** $p_{\text{3DS}} = 93.19\%$ vs. $p_{\text{Non-3DS}} = 89.77\%$.
   - **Hypothesis Outcome:** $Z = 45.67$, $p < 10^{-15}$, **Reject Null Hypothesis $H_0$**.
   - **99% Confidence Interval:** `[+3.21%, +3.62%]`.
   - **Commercial Impact:** **+$882,407.78 in settled GTV** and **+$22,060.19 in net revenue**, accompanied by a liability shift protecting merchants from fraud chargebacks.
+
+<p align="center">
+  <img src="reports/figures/statistical_hypothesis_test.png" width="700" alt="Statistical Hypothesis Test" />
+  <br/><em>Figure 7: Two-Sample Proportion Z-Test Sampling Distribution & Rejection Region (α = 0.01)</em>
+</p>
 
 ### 6. Operational Incident Root-Cause Analysis (RCA)
 - **Incident 1 (European Gateway Outage, Aug 12–16):** Network packet loss caused processing latency in Germany and France to spike from 175 ms to 2,800+ ms, collapsing authorization rates from 91.5% to 58.2% and leaking $1.42M in TVaR. Remediation: Dynamic multi-acquirer latency failover at 600 ms.
 - **Incident 2 (Card-Testing Bot Attack, May 8–10):** Malicious botnet targeted Merchant `MERCH-0042` (Digital Goods) with micro-charges ($1.50–$3.50), causing volume to surge 4.5x while authorization plunged to 18.5%. Remediation: IP subnet velocity rate-limiting and checkout CAPTCHA triggers.
 
+<p align="center">
+  <img src="reports/figures/root_cause_incident_analysis.png" width="700" alt="Root Cause Incident Analysis" />
+  <br/><em>Figure 8: Operational Incident Diagnostics: August Gateway Outage & May Bot Attack</em>
+</p>
+
 ### 7. Time-Series Forecasting (Q1 2025)
 - Trained **Holt-Winters Triple Exponential Smoothing** (additive trend, 7-day weekly seasonality) with strict chronological out-of-sample backtesting (80% train / 20% test).
 - **Backtest Accuracy:** Volume MAPE = **1.53%**, Settled GTV MAPE = **3.25%**, Authorization Rate MAE = **0.42 pp**.
 - **Q1 2025 Projection:** Forecasts **243,850 transactions** and **$29.58M in settled GTV** with 80% empirical prediction bounds.
+
+<p align="center">
+  <img src="reports/figures/forecasting_trajectory.png" width="700" alt="Forecasting Trajectory" />
+  <br/><em>Figure 9: Holt-Winters Daily Transaction Volume 90-Day Forward Forecast & Prediction Bounds</em>
+</p>
 
 ---
 
