@@ -331,7 +331,7 @@ PAYMENTIQ/
 ### 1. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/PAYMENTIQ.git
+git clone https://github.com/hriday-sobti/PAYMENTIQ.git
 cd PAYMENTIQ
 
 # Install required dependencies
