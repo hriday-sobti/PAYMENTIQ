@@ -24,10 +24,10 @@ This report presents out-of-sample backtest accuracy and forward projections for
 
 ## 3. Q1 2025 Forward Projections Summary
 
-- **Projected Q1 2025 Total Transaction Volume:** **245,457 transactions**
-- **Projected Q1 2025 Settled GTV:** **$29,616,516.47**
-- **Projected Q1 2025 Mean Authorization Rate:** **90.46%**
-- **Average Projected Daily Volume:** `2,727 transactions/day` (80% prediction bounds: `2,661` to `2,793`)
+- **Projected Q1 2025 Total Transaction Volume:** **81,834 transactions**
+- **Projected Q1 2025 Settled GTV:** **$9,893,365.09**
+- **Projected Q1 2025 Mean Authorization Rate:** **90.45%**
+- **Average Projected Daily Volume:** `2,728 transactions/day` (80% prediction bounds: `2,662` to `2,794`)
 
 ---
 
