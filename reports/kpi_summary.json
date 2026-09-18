@@ -1,0 +1,21 @@
+{
+  "Total_Transaction_Volume": 1000000,
+  "Approved_Volume": 911844,
+  "Gross_Transaction_Value": 134531743.69,
+  "Settled_Transaction_Value": 121120030.8,
+  "Transaction_Value_at_Risk": 13411712.89,
+  "Authorization_Rate_Pct": 91.18,
+  "Decline_Rate_Pct": 8.69,
+  "Failure_Rate_Pct": 0.13,
+  "Gross_Revenue": 2621500.73,
+  "Interchange_Cost": 1637102.62,
+  "Scheme_Cost": 180925.51,
+  "Net_Revenue": 803472.6,
+  "Net_Take_Rate_BPS": 66.3,
+  "Net_Contribution": 647055.64,
+  "Contribution_Margin_Pct": 80.53,
+  "Recoverable_Leakage_Estimated": 103334.06,
+  "Chargeback_Count": 1110,
+  "Chargeback_Rate_BPS": 12.17,
+  "Average_Latency_MS": 201.0
+}
