@@ -1,0 +1,145 @@
+{
+  "validation_timestamp": "2026-09-18T23:05:20.138689",
+  "status": "PASS",
+  "checks": [
+    {
+      "check_id": "DQ_01",
+      "name": "Mandatory Columns Nullness Check",
+      "category": "Completeness",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Zero nulls across mandatory columns: {'transaction_id': np.int64(0), 'customer_key': np.int64(0), 'merchant_key': np.int64(0), 'date_key': np.int64(0), 'timestamp': np.int64(0), 'amount': np.int64(0), 'currency': np.int64(0), 'payment_method_key': np.int64(0), 'auth_status': np.int64(0), 'processing_fee': np.int64(0), 'interchange_fee': np.int64(0), 'scheme_fee': np.int64(0)}"
+    },
+    {
+      "check_id": "DQ_02",
+      "name": "Transaction ID Primary Key Uniqueness",
+      "category": "Uniqueness",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Distinct transaction IDs: 1000000 / 1000000 (0 duplicates)"
+    },
+    {
+      "check_id": "DQ_03",
+      "name": "Transaction Amount Positivity ($ > 0.00)",
+      "category": "Financial Consistency",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Non-positive amounts detected: 0"
+    },
+    {
+      "check_id": "DQ_04",
+      "name": "Non-negative Fee Checks",
+      "category": "Financial Consistency",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Negative fees detected: 0"
+    },
+    {
+      "check_id": "DQ_05",
+      "name": "Processing Fee Less Than Transaction Amount",
+      "category": "Financial Consistency",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Processing fees exceeding transaction amount: 0"
+    },
+    {
+      "check_id": "DQ_06",
+      "name": "Approved Transactions Decline Code Nullness",
+      "category": "Domain Validity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Approved transactions with non-null decline codes: 0"
+    },
+    {
+      "check_id": "DQ_07",
+      "name": "Declined Transactions Must Possess Valid Decline Codes",
+      "category": "Domain Validity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Declined transactions missing decline codes: 0"
+    },
+    {
+      "check_id": "DQ_08",
+      "name": "Customer Foreign Key Referential Integrity",
+      "category": "Referential Integrity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Transactions with invalid customer_key: 0"
+    },
+    {
+      "check_id": "DQ_09",
+      "name": "Merchant Foreign Key Referential Integrity",
+      "category": "Referential Integrity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Transactions with invalid merchant_key: 0"
+    },
+    {
+      "check_id": "DQ_10",
+      "name": "Payment Method Foreign Key Referential Integrity",
+      "category": "Referential Integrity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Transactions with invalid payment_method_key: 0"
+    },
+    {
+      "check_id": "DQ_11",
+      "name": "Calendar Date Foreign Key Referential Integrity",
+      "category": "Referential Integrity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Transactions with invalid date_key: 0"
+    },
+    {
+      "check_id": "DQ_12",
+      "name": "Dispute Transaction ID Referential Integrity",
+      "category": "Referential Integrity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Disputes referencing non-existent transaction IDs: 0"
+    },
+    {
+      "check_id": "DQ_13",
+      "name": "Support Cases Transaction ID Referential Integrity",
+      "category": "Referential Integrity",
+      "status": "PASSED",
+      "severity": "ERROR",
+      "details": "Support cases referencing non-existent transaction IDs: 0"
+    }
+  ],
+  "profiling": {
+    "total_records": 1000000,
+    "total_gtv": 134531743.69,
+    "mean_amount": 134.53174368999998,
+    "median_amount": 61.83,
+    "p25_amount": 34.08,
+    "p75_amount": 129.27,
+    "p95_amount": 507.0909999999986,
+    "p99_amount": 1144.3925000000024,
+    "max_amount": 15000.0,
+    "amount_skewness": 7.258630404103252,
+    "mean_latency_ms": 201.01511,
+    "median_latency_ms": 181.0,
+    "p95_latency_ms": 326.0,
+    "auth_rate_pct": 91.1844,
+    "refund_rate_pct": 1.6591000000000002,
+    "chargeback_rate_pct": 0.11100000000000002,
+    "fraud_rate_pct": 0.44920000000000004,
+    "status_distribution": {
+      "Approved": 911844,
+      "Declined": 86850,
+      "Failed": 1306
+    },
+    "channel_distribution": {
+      "E-Commerce / CNP": 599757,
+      "In-Store / POS": 300120,
+      "Recurring / Subscription": 100123
+    }
+  },
+  "summary": {
+    "total_checks": 13,
+    "passed": 13,
+    "failed": 0,
+    "warnings": 0
+  }
+}
