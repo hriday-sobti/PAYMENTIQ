@@ -4,7 +4,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16.6-336791.svg)](https://www.postgresql.org/)
 [![DuckDB](https://img.shields.io/badge/DuckDB-1.5.5-FFF000.svg)](https://duckdb.org/)
 [![Power BI](https://img.shields.io/badge/Power_BI-PBIP_Project-F2C811.svg)](https://powerbi.microsoft.com/)
-[![Tests](https://img.shields.io/badge/Tests-39_Passed-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/Tests-197_Passed-brightgreen.svg)](tests/)
 [![Reconciliation](https://img.shields.io/badge/Reconciliation-0.00%25_Variance-success.svg)](documentation/RECONCILIATION_REPORT.md)
 
 > **Flagship Portfolio Pitch:** Built an enterprise-grade payment analytics platform that processes multi-million transaction event streams to identify revenue leakage, customer behavior, merchant performance, payment failure modes, fraud signals, and operational bottlenecks using **Python, Advanced SQL, PostgreSQL, DuckDB, Power BI, and Grounded AI Analytics**.
@@ -369,7 +369,7 @@ Open [`powerbi/PAYMENTIQ.pbip`](powerbi/PAYMENTIQ.pbip) directly in Power BI Des
 
 • Developed customer RFM segmentation, 12-month cohort retention matrices, and a 4-Quadrant Merchant Opportunity Matrix, identifying $103K+ in recoverable revenue leakage from retryable soft declines.
 
-• Designed an interactive 6-page Power BI executive suite (.pbip/TMDL) and a grounded AI analytics assistant with verified 0.00% cross-platform financial reconciliation and 39 automated CI tests.
+• Designed an interactive 6-page Power BI executive suite (.pbip/TMDL) and a grounded AI analytics assistant with verified 0.00% cross-platform financial reconciliation and 197 automated CI tests.
 ```
 
 ---

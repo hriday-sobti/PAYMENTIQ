@@ -18,8 +18,8 @@ class GroundedAnalyticsEngine:
     INTENT_PATTERNS = [
         (r"(top leaking|highest leakage|leaking merchant|worst merchant|merchants?.*leak|leak.*merchants?)", "TOP_LEAKING_MERCHANTS"),
         (r"\b(leakage|recoverable|lost|losing|value at risk|tvar|failed payment|declines?)\b", "REVENUE_LEAKAGE_SUMMARY"),
-        (r"\b(auth rate|authorization rate|approval rate|payment method|rails?|wallets?|debits?|credits?|conversion)\b", "AUTH_RATE_BY_METHOD"),
-        (r"\b(rfm|customer segments?|champions|loyals?|dormants?|clv)\b", "RFM_SEGMENT_SUMMARY"),
+        (r"\b(auth rate|authorization rate|approval rate|payment method|rails?|wallets?|debits?|credits?|cards?|brands?|conversion)\b", "AUTH_RATE_BY_METHOD"),
+        (r"\b(rfm|customer segments?|champions|loyals?|dormants?|clv|customer lifetime value|lifetime value)\b", "RFM_SEGMENT_SUMMARY"),
         (r"\b(merchant quadrants?|opportunity matrix|core anchors?|margin drag)\b", "MERCHANT_QUADRANT_SUMMARY"),
         (r"\b(supports?|tickets?|sla|resolution times?|csat)\b", "SUPPORT_SLA_SUMMARY"),
         (r"\b(total|portfolio|gtv|revenue|overall|summary|performance)\b", "GLOBAL_PORTFOLIO_TOTALS")

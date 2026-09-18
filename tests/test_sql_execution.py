@@ -1,6 +1,6 @@
 """
 PAYMENTIQ Integration Tests for PostgreSQL & DuckDB Query Execution
-Validates that all analytical views and advanced queries execute without errors and return populated datasets.
+Validates that all analytical SQL views and advanced query scripts execute and produce non-empty datasets.
 """
 import pytest
 from pathlib import Path
@@ -14,27 +14,56 @@ def pg_connection():
     with engine.connect() as conn:
         yield conn
 
-def test_analytical_views_row_counts(pg_connection):
-    """Verifies that all 5 analytical views return non-empty datasets from PostgreSQL."""
-    views = [
-        "analytics.v_payment_performance_by_method",
-        "analytics.v_payment_performance_by_category",
-        "analytics.v_revenue_leakage_waterfall",
-        "analytics.v_customer_rfm_scores",
-        "analytics.v_merchant_opportunity_matrix",
-        "analytics.v_operational_support_metrics"
-    ]
-    for view in views:
-        count = pg_connection.execute(text(f"SELECT COUNT(*) FROM {view};")).scalar()
-        assert count > 0, f"Analytical view {view} returned 0 rows!"
+@pytest.fixture(scope="module")
+def duckdb_connection():
+    """Provides an active DuckDB connection for query testing."""
+    return db_manager.get_duckdb()
 
-def test_advanced_queries_execution(pg_connection):
-    """Verifies that all advanced SQL query scripts execute and produce non-empty results."""
-    query_files = sorted(list(Path("sql/advanced_queries").glob("*.sql")))
-    assert len(query_files) >= 3, "Missing expected advanced SQL query files"
+ANALYTICAL_VIEWS = [
+    "analytics.v_payment_performance_by_method",
+    "analytics.v_payment_performance_by_category",
+    "analytics.v_daily_payment_trends",
+    "analytics.v_revenue_leakage_waterfall",
+    "analytics.v_decline_code_leakage",
+    "analytics.v_merchant_leakage_ranking",
+    "analytics.v_customer_rfm_scores",
+    "analytics.v_rfm_segment_summary",
+    "analytics.v_merchant_opportunity_matrix",
+    "analytics.v_operational_support_metrics",
+    "analytics.v_technical_latency_summary"
+]
 
-    for qf in query_files:
-        sql_content = qf.read_text(encoding="utf-8")
-        cleaned_sql = sql_content.strip().rstrip(";")
-        result = pg_connection.execute(text(f"SELECT * FROM ({cleaned_sql}) AS q_sub LIMIT 10;")).fetchall()
-        assert len(result) > 0, f"Query {qf.name} returned 0 rows!"
+@pytest.mark.parametrize("view_name", ANALYTICAL_VIEWS)
+def test_postgresql_view_execution(pg_connection, view_name):
+    """Rule: Every analytical view in PostgreSQL must be queryable and return non-empty records."""
+    count = pg_connection.execute(text(f"SELECT COUNT(*) FROM {view_name};")).scalar()
+    assert count > 0, f"PostgreSQL view {view_name} returned 0 rows!"
+
+@pytest.mark.parametrize("view_name", ANALYTICAL_VIEWS)
+def test_duckdb_view_execution(duckdb_connection, view_name):
+    """Rule: Every analytical view in DuckDB must be queryable and return non-empty records."""
+    res = duckdb_connection.execute(f"SELECT COUNT(*) FROM {view_name};").fetchone()
+    assert res[0] > 0, f"DuckDB view {view_name} returned 0 rows!"
+
+ADVANCED_QUERIES = [
+    "cohort_retention_matrix.sql",
+    "rolling_payment_velocity.sql",
+    "dimensional_pareto.sql"
+]
+
+@pytest.mark.parametrize("query_filename", ADVANCED_QUERIES)
+def test_postgresql_advanced_query_execution(pg_connection, query_filename):
+    """Rule: Every advanced SQL analytical query must execute cleanly and return records in PostgreSQL."""
+    q_path = Path("sql/advanced_queries") / query_filename
+    assert q_path.exists(), f"Missing advanced query file: {query_filename}"
+    sql_text = q_path.read_text(encoding="utf-8").strip().rstrip(";")
+    result = pg_connection.execute(text(f"SELECT * FROM ({sql_text}) AS q_sub LIMIT 10;")).fetchall()
+    assert len(result) > 0, f"Query {query_filename} returned 0 rows in PostgreSQL!"
+
+@pytest.mark.parametrize("query_filename", ADVANCED_QUERIES)
+def test_duckdb_advanced_query_execution(duckdb_connection, query_filename):
+    """Rule: Every advanced SQL analytical query must execute cleanly in DuckDB."""
+    q_path = Path("sql/advanced_queries") / query_filename
+    sql_text = q_path.read_text(encoding="utf-8").strip().rstrip(";")
+    result = duckdb_connection.execute(f"SELECT * FROM ({sql_text}) AS q_sub LIMIT 10;").fetchall()
+    assert len(result) > 0, f"Query {query_filename} returned 0 rows in DuckDB!"
