@@ -1,0 +1,151 @@
+// ====================================================================
+// PAYMENTIQ Core DAX Measures Catalog
+// Author: PAYMENTIQ Analytics Engineering
+// Evaluation Context: Pure Star Schema (core.fact_transactions, dim_*)
+// ====================================================================
+
+// --- 1. Base Volume & Monetary Measures ---
+
+[Total Transactions] = 
+COUNTROWS(fact_transactions)
+
+[Approved Transactions] = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[auth_status] = "Approved"
+)
+
+[Declined Transactions] = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[auth_status] = "Declined"
+)
+
+[Failed Transactions] = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[auth_status] = "Failed"
+)
+
+[Gross Transaction Value (GTV)] = 
+SUM(fact_transactions[amount])
+
+[Settled Transaction Value (STV)] = 
+CALCULATE(
+    SUM(fact_transactions[amount]),
+    fact_transactions[auth_status] = "Approved"
+)
+
+[Transaction Value at Risk (TVaR)] = 
+CALCULATE(
+    SUM(fact_transactions[amount]),
+    fact_transactions[auth_status] <> "Approved"
+)
+
+[Average Ticket Size] = 
+AVERAGE(fact_transactions[amount])
+
+// --- 2. Operational Conversion Rates ---
+
+[Authorization Rate %] = 
+DIVIDE(
+    [Approved Transactions],
+    [Total Transactions],
+    0
+)
+
+[Decline Rate %] = 
+DIVIDE(
+    [Declined Transactions],
+    [Total Transactions],
+    0
+)
+
+[Failure Rate %] = 
+DIVIDE(
+    [Failed Transactions],
+    [Total Transactions],
+    0
+)
+
+[Average Latency (ms)] = 
+AVERAGE(fact_transactions[latency_ms])
+
+// --- 3. Financial Economics & Unit Margins ---
+
+[Gross Revenue (MDR)] = 
+SUM(fact_transactions[processing_fee])
+
+[Interchange Cost] = 
+SUM(fact_transactions[interchange_fee])
+
+[Scheme Cost] = 
+SUM(fact_transactions[scheme_fee])
+
+[Total Cost of Payments] = 
+[Interchange Cost] + [Scheme Cost]
+
+[Net Revenue] = 
+[Gross Revenue (MDR)] - [Total Cost of Payments]
+
+[Net Take Rate (BPS)] = 
+DIVIDE(
+    [Net Revenue] * 10000,
+    [Settled Transaction Value (STV)],
+    0
+)
+
+[Chargeback Losses] = 
+CALCULATE(
+    SUM(fact_transactions[amount]) + COUNTROWS(fact_transactions) * 20.0,
+    fact_transactions[chargeback_flag] = TRUE
+)
+
+[Net Contribution] = 
+[Net Revenue] - [Chargeback Losses]
+
+[Contribution Margin %] = 
+DIVIDE(
+    [Net Contribution],
+    [Net Revenue],
+    0
+)
+
+// --- 4. Revenue Leakage & Recoverability ---
+
+[Soft Decline Value] = 
+CALCULATE(
+    SUM(fact_transactions[amount]),
+    fact_transactions[is_soft_decline] = TRUE
+)
+
+[Hard Decline Value] = 
+CALCULATE(
+    SUM(fact_transactions[amount]),
+    fact_transactions[auth_status] <> "Approved",
+    fact_transactions[is_soft_decline] = FALSE
+)
+
+[Recoverable Revenue Opportunity] = 
+[Soft Decline Value] * 0.025 * 0.45
+
+// --- 5. Risk & Scheme Monitoring ---
+
+[Dispute Count] = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[chargeback_flag] = TRUE
+)
+
+[Dispute Rate (BPS)] = 
+DIVIDE(
+    [Dispute Count] * 10000,
+    [Approved Transactions],
+    0
+)
+
+[High Risk Transactions] = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[risk_score] >= 600
+)

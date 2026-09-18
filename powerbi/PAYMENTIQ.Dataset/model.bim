@@ -1,0 +1,248 @@
+{
+  "name": "PAYMENTIQ_Semantic_Model",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "rel_tx_customer",
+        "fromTable": "fact_transactions",
+        "fromColumn": "customer_key",
+        "toTable": "dim_customers",
+        "toColumn": "customer_key"
+      },
+      {
+        "name": "rel_tx_merchant",
+        "fromTable": "fact_transactions",
+        "fromColumn": "merchant_key",
+        "toTable": "dim_merchants",
+        "toColumn": "merchant_key"
+      },
+      {
+        "name": "rel_tx_payment_method",
+        "fromTable": "fact_transactions",
+        "fromColumn": "payment_method_key",
+        "toTable": "dim_payment_methods",
+        "toColumn": "payment_method_key"
+      },
+      {
+        "name": "rel_tx_date",
+        "fromTable": "fact_transactions",
+        "fromColumn": "date_key",
+        "toTable": "dim_dates",
+        "toColumn": "date_key"
+      },
+      {
+        "name": "rel_tx_decline_code",
+        "fromTable": "fact_transactions",
+        "fromColumn": "decline_code",
+        "toTable": "dim_decline_codes",
+        "toColumn": "decline_code"
+      },
+      {
+        "name": "rel_dsp_merchant",
+        "fromTable": "fact_disputes",
+        "fromColumn": "merchant_key",
+        "toTable": "dim_merchants",
+        "toColumn": "merchant_key"
+      },
+      {
+        "name": "rel_cases_customer",
+        "fromTable": "fact_support_cases",
+        "fromColumn": "customer_key",
+        "toTable": "dim_customers",
+        "toColumn": "customer_key"
+      }
+    ],
+    "tables": [
+      {
+        "name": "dim_customers",
+        "columns": [
+          {"name": "customer_key", "dataType": "int64", "isKey": true},
+          {"name": "customer_id", "dataType": "string"},
+          {"name": "signup_date", "dataType": "dateTime"},
+          {"name": "customer_country", "dataType": "string"},
+          {"name": "customer_segment", "dataType": "string"},
+          {"name": "acquisition_channel", "dataType": "string"},
+          {"name": "risk_tier", "dataType": "string"}
+        ]
+      },
+      {
+        "name": "dim_merchants",
+        "columns": [
+          {"name": "merchant_key", "dataType": "int64", "isKey": true},
+          {"name": "merchant_id", "dataType": "string"},
+          {"name": "merchant_name", "dataType": "string"},
+          {"name": "mcc_code", "dataType": "string"},
+          {"name": "merchant_category", "dataType": "string"},
+          {"name": "merchant_country", "dataType": "string"},
+          {"name": "onboarding_date", "dataType": "dateTime"},
+          {"name": "pricing_tier", "dataType": "string"},
+          {"name": "acquirer_markup_bps", "dataType": "int64"}
+        ]
+      },
+      {
+        "name": "dim_payment_methods",
+        "columns": [
+          {"name": "payment_method_key", "dataType": "int64", "isKey": true},
+          {"name": "payment_method_id", "dataType": "string"},
+          {"name": "method_name", "dataType": "string"},
+          {"name": "card_brand", "dataType": "string"},
+          {"name": "card_type", "dataType": "string"},
+          {"name": "auth_rate_baseline", "dataType": "double"},
+          {"name": "interchange_rate_bps", "dataType": "int64"},
+          {"name": "scheme_fee_bps", "dataType": "int64"},
+          {"name": "acquirer_fee_bps", "dataType": "int64"}
+        ]
+      },
+      {
+        "name": "dim_dates",
+        "dataCategory": "Time",
+        "columns": [
+          {"name": "date_key", "dataType": "int64", "isKey": true},
+          {"name": "full_date", "dataType": "dateTime", "isKey": false},
+          {"name": "year", "dataType": "int64"},
+          {"name": "quarter", "dataType": "int64"},
+          {"name": "month", "dataType": "int64"},
+          {"name": "month_name", "dataType": "string"},
+          {"name": "week_of_year", "dataType": "int64"},
+          {"name": "day_of_month", "dataType": "int64"},
+          {"name": "day_of_week", "dataType": "int64"},
+          {"name": "day_name", "dataType": "string"},
+          {"name": "is_weekend", "dataType": "boolean"},
+          {"name": "is_month_end", "dataType": "boolean"},
+          {"name": "is_quarter_end", "dataType": "boolean"}
+        ]
+      },
+      {
+        "name": "dim_decline_codes",
+        "columns": [
+          {"name": "decline_code", "dataType": "string", "isKey": true},
+          {"name": "decline_reason", "dataType": "string"},
+          {"name": "decline_type", "dataType": "string"},
+          {"name": "is_retryable", "dataType": "boolean"},
+          {"name": "recommended_action", "dataType": "string"}
+        ]
+      },
+      {
+        "name": "fact_transactions",
+        "columns": [
+          {"name": "date_key", "dataType": "int64"},
+          {"name": "merchant_key", "dataType": "int64"},
+          {"name": "payment_method_key", "dataType": "int64"},
+          {"name": "channel", "dataType": "string"},
+          {"name": "device_type", "dataType": "string"},
+          {"name": "is_3ds_authenticated", "dataType": "boolean"},
+          {"name": "auth_status", "dataType": "string"},
+          {"name": "decline_code", "dataType": "string"},
+          {"name": "transaction_count", "dataType": "int64"},
+          {"name": "total_amount", "dataType": "double"},
+          {"name": "total_processing_fee", "dataType": "double"},
+          {"name": "total_interchange_fee", "dataType": "double"},
+          {"name": "total_scheme_fee", "dataType": "double"},
+          {"name": "total_net_revenue", "dataType": "double"},
+          {"name": "total_net_contribution", "dataType": "double"},
+          {"name": "avg_latency_ms", "dataType": "double"},
+          {"name": "refund_count", "dataType": "int64"},
+          {"name": "chargeback_count", "dataType": "int64"},
+          {"name": "fraud_count", "dataType": "int64"},
+          {"name": "soft_decline_amount", "dataType": "double"}
+        ],
+        "measures": [
+          {
+            "name": "Gross Transaction Value (GTV)",
+            "expression": "SUM(fact_transactions[total_amount])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Settled Transaction Value (STV)",
+            "expression": "CALCULATE(SUM(fact_transactions[total_amount]), fact_transactions[auth_status] = \"Approved\")",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total Transactions",
+            "expression": "SUM(fact_transactions[transaction_count])",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Approved Transactions",
+            "expression": "CALCULATE(SUM(fact_transactions[transaction_count]), fact_transactions[auth_status] = \"Approved\")",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "Authorization Rate %",
+            "expression": "DIVIDE([Approved Transactions], [Total Transactions], 0)",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Gross Revenue (MDR)",
+            "expression": "SUM(fact_transactions[total_processing_fee])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Net Revenue",
+            "expression": "SUM(fact_transactions[total_net_revenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Net Contribution",
+            "expression": "SUM(fact_transactions[total_net_contribution])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Contribution Margin %",
+            "expression": "DIVIDE([Net Contribution], [Net Revenue], 0)",
+            "formatString": "0.00%"
+          },
+          {
+            "name": "Recoverable Revenue Opportunity",
+            "expression": "SUM(fact_transactions[soft_decline_amount]) * 0.025 * 0.45",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Dispute Rate (BPS)",
+            "expression": "DIVIDE(SUM(fact_transactions[chargeback_count]) * 10000, [Approved Transactions], 0)",
+            "formatString": "#,##0.00"
+          }
+        ]
+      },
+      {
+        "name": "fact_disputes",
+        "columns": [
+          {"name": "dispute_id", "dataType": "string", "isKey": true},
+          {"name": "transaction_id", "dataType": "string"},
+          {"name": "merchant_key", "dataType": "int64"},
+          {"name": "customer_key", "dataType": "int64"},
+          {"name": "dispute_date_key", "dataType": "int64"},
+          {"name": "dispute_timestamp", "dataType": "dateTime"},
+          {"name": "dispute_amount", "dataType": "double"},
+          {"name": "chargeback_fee", "dataType": "double"},
+          {"name": "dispute_reason", "dataType": "string"},
+          {"name": "dispute_status", "dataType": "string"}
+        ]
+      },
+      {
+        "name": "fact_support_cases",
+        "columns": [
+          {"name": "case_id", "dataType": "string", "isKey": true},
+          {"name": "customer_key", "dataType": "int64"},
+          {"name": "customer_id", "dataType": "string"},
+          {"name": "transaction_id", "dataType": "string"},
+          {"name": "created_date_key", "dataType": "int64"},
+          {"name": "created_timestamp", "dataType": "dateTime"},
+          {"name": "category", "dataType": "string"},
+          {"name": "severity", "dataType": "string"},
+          {"name": "resolution_time_minutes", "dataType": "int64"},
+          {"name": "sla_breached_flag", "dataType": "boolean"},
+          {"name": "csat_score", "dataType": "int64"},
+          {"name": "status", "dataType": "string"}
+        ]
+      }
+    ]
+  }
+}

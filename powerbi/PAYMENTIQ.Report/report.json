@@ -1,0 +1,159 @@
+{
+  "config": {
+    "version": "5.50",
+    "themeCollection": {
+      "baseTheme": {
+        "name": "PAYMENTIQ_Executive_Theme",
+        "version": "1.0",
+        "type": "Custom"
+      }
+    }
+  },
+  "layoutOptimization": 0,
+  "pages": [
+    {
+      "name": "Page1_Executive_Overview",
+      "displayName": "1. Executive Overview",
+      "visualContainers": [
+        {
+          "x": 20, "y": 20, "width": 240, "height": 110,
+          "config": {"name": "kpi_gtv", "title": "Gross Transaction Value", "measure": "[Gross Transaction Value (GTV)]"}
+        },
+        {
+          "x": 280, "y": 20, "width": 240, "height": 110,
+          "config": {"name": "kpi_stv", "title": "Settled Volume", "measure": "[Settled Transaction Value (STV)]"}
+        },
+        {
+          "x": 540, "y": 20, "width": 240, "height": 110,
+          "config": {"name": "kpi_auth_rate", "title": "Authorization Rate", "measure": "[Authorization Rate %]"}
+        },
+        {
+          "x": 800, "y": 20, "width": 240, "height": 110,
+          "config": {"name": "kpi_net_rev", "title": "Net Retained Revenue", "measure": "[Net Revenue]"}
+        },
+        {
+          "x": 1060, "y": 20, "width": 200, "height": 110,
+          "config": {"name": "kpi_margin", "title": "Contribution Margin", "measure": "[Contribution Margin %]"}
+        },
+        {
+          "x": 20, "y": 150, "width": 780, "height": 340,
+          "config": {"name": "trend_monthly", "title": "Monthly Settled GTV & Net Revenue Trajectory", "type": "lineAndStackedColumnComboChart"}
+        },
+        {
+          "x": 820, "y": 150, "width": 440, "height": 340,
+          "config": {"name": "bar_category_share", "title": "Settled Volume by Merchant Category", "type": "barChart"}
+        },
+        {
+          "x": 20, "y": 510, "width": 1240, "height": 180,
+          "config": {"name": "table_country_kpis", "title": "Regional Conversion & Fee Performance Scorecard", "type": "tableEx"}
+        }
+      ]
+    },
+    {
+      "name": "Page2_Payment_Performance",
+      "displayName": "2. Payment Performance",
+      "visualContainers": [
+        {
+          "x": 20, "y": 20, "width": 600, "height": 320,
+          "config": {"name": "funnel_conversion", "title": "Payment Conversion Funnel (Initiated -> Settled)", "type": "funnel"}
+        },
+        {
+          "x": 640, "y": 20, "width": 620, "height": 320,
+          "config": {"name": "bar_rail_auth", "title": "Authorization Rate by Payment Rail & Card Brand", "type": "columnChart"}
+        },
+        {
+          "x": 20, "y": 360, "width": 600, "height": 340,
+          "config": {"name": "donut_decline_reasons", "title": "Decline Taxonomy (Soft vs. Hard)", "type": "donutChart"}
+        },
+        {
+          "x": 640, "y": 360, "width": 620, "height": 340,
+          "config": {"name": "matrix_drilldown", "title": "Hierarchical Drilldown: Country -> Category -> Method", "type": "pivotTable"}
+        }
+      ]
+    },
+    {
+      "name": "Page3_Customer_Intelligence",
+      "displayName": "3. Customer Intelligence",
+      "visualContainers": [
+        {
+          "x": 20, "y": 20, "width": 400, "height": 320,
+          "config": {"name": "bar_rfm_segments", "title": "RFM Segment Value Concentration", "type": "barChart"}
+        },
+        {
+          "x": 440, "y": 20, "width": 820, "height": 320,
+          "config": {"name": "heatmap_cohorts", "title": "12-Month Cohort Retention Triangle", "type": "matrix"}
+        },
+        {
+          "x": 20, "y": 360, "width": 600, "height": 340,
+          "config": {"name": "scatter_clv", "title": "Customer Spend vs. Net Contribution (CLV)", "type": "scatterChart"}
+        },
+        {
+          "x": 640, "y": 360, "width": 620, "height": 340,
+          "config": {"name": "table_at_risk_customers", "title": "At Risk / Churn Alert Customers (Priority Outreach)", "type": "tableEx"}
+        }
+      ]
+    },
+    {
+      "name": "Page4_Merchant_Intelligence",
+      "displayName": "4. Merchant Intelligence",
+      "visualContainers": [
+        {
+          "x": 20, "y": 20, "width": 780, "height": 450,
+          "config": {"name": "scatter_opportunity_matrix", "title": "4-Quadrant Merchant Opportunity Matrix (GTV vs. Margin %)", "type": "scatterChart"}
+        },
+        {
+          "x": 820, "y": 20, "width": 440, "height": 450,
+          "config": {"name": "donut_quadrant_share", "title": "GTV Distribution by Opportunity Quadrant", "type": "donutChart"}
+        },
+        {
+          "x": 20, "y": 490, "width": 1240, "height": 220,
+          "config": {"name": "table_merchant_scorecard", "title": "Merchant Unit Economics & Scheme Monitoring BPS Table", "type": "tableEx"}
+        }
+      ]
+    },
+    {
+      "name": "Page5_Risk_and_Anomaly_Monitoring",
+      "displayName": "5. Risk & Anomaly Monitoring",
+      "visualContainers": [
+        {
+          "x": 20, "y": 20, "width": 600, "height": 320,
+          "config": {"name": "hist_risk_scores", "title": "Transaction Risk Score Distribution (0-1000)", "type": "columnChart"}
+        },
+        {
+          "x": 640, "y": 20, "width": 620, "height": 320,
+          "config": {"name": "bar_dispute_categories", "title": "Chargeback Dispute Exposure by Merchant Category (BPS)", "type": "barChart"}
+        },
+        {
+          "x": 20, "y": 360, "width": 1240, "height": 340,
+          "config": {"name": "table_anomalous_events", "title": "High-Priority Anomalous Transactions Flagged for Review", "type": "tableEx"}
+        }
+      ]
+    },
+    {
+      "name": "Page6_Management_Action_Center",
+      "displayName": "6. Management Action Center",
+      "visualContainers": [
+        {
+          "x": 20, "y": 20, "width": 1240, "height": 90,
+          "config": {"name": "banner_action_center", "title": "WHAT SHOULD MANAGEMENT INVESTIGATE?", "type": "textbox"}
+        },
+        {
+          "x": 20, "y": 130, "width": 390, "height": 270,
+          "config": {"name": "card_action_1", "title": "Action 1: Smart Retry Routing", "impact": "$103K+ Net Revenue", "type": "card"}
+        },
+        {
+          "x": 440, "y": 130, "width": 390, "height": 270,
+          "config": {"name": "card_action_2", "title": "Action 2: Dynamic 3DS Rollout", "impact": "+350 bps Auth Uplift", "type": "card"}
+        },
+        {
+          "x": 860, "y": 130, "width": 400, "height": 270,
+          "config": {"name": "card_action_3", "title": "Action 3: Margin Drag Pricing Migration", "impact": "+$45K Contribution", "type": "card"}
+        },
+        {
+          "x": 20, "y": 420, "width": 1240, "height": 280,
+          "config": {"name": "table_prioritized_investigations", "title": "Prioritized Operational & Commercial Action Backlog", "type": "tableEx"}
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+// ====================================================================
+// PAYMENTIQ Time Intelligence DAX Measures
+// Author: PAYMENTIQ Analytics Engineering
+// Evaluation Context: Date Dimension (core.dim_dates)
+// ====================================================================
+
+[Settled GTV Prior Month] = 
+CALCULATE(
+    [Settled Transaction Value (STV)],
+    DATEADD(dim_dates[full_date], -1, MONTH)
+)
+
+[Settled GTV MoM Growth %] = 
+DIVIDE(
+    [Settled Transaction Value (STV)] - [Settled GTV Prior Month],
+    [Settled GTV Prior Month],
+    0
+)
+
+[Settled GTV YTD] = 
+TOTALYTD(
+    [Settled Transaction Value (STV)],
+    dim_dates[full_date]
+)
+
+[Total Transactions Prior Month] = 
+CALCULATE(
+    [Total Transactions],
+    DATEADD(dim_dates[full_date], -1, MONTH)
+)
+
+[Transaction Volume MoM Growth %] = 
+DIVIDE(
+    [Total Transactions] - [Total Transactions Prior Month],
+    [Total Transactions Prior Month],
+    0
+)
+
+[Rolling 7D Settled GTV] = 
+CALCULATE(
+    [Settled Transaction Value (STV)],
+    DATESINPERIOD(
+        dim_dates[full_date],
+        LASTDATE(dim_dates[full_date]),
+        -7,
+        DAY
+    )
+)
+
+[Rolling 7D Approved Transactions] = 
+CALCULATE(
+    [Approved Transactions],
+    DATESINPERIOD(
+        dim_dates[full_date],
+        LASTDATE(dim_dates[full_date]),
+        -7,
+        DAY
+    )
+)
+
+[Rolling 7D Total Transactions] = 
+CALCULATE(
+    [Total Transactions],
+    DATESINPERIOD(
+        dim_dates[full_date],
+        LASTDATE(dim_dates[full_date]),
+        -7,
+        DAY
+    )
+)
+
+[Rolling 7D Authorization Rate %] = 
+DIVIDE(
+    [Rolling 7D Approved Transactions],
+    [Rolling 7D Total Transactions],
+    0
+)
+
+[Rolling 30D Authorization Rate %] = 
+CALCULATE(
+    [Authorization Rate %],
+    DATESINPERIOD(
+        dim_dates[full_date],
+        LASTDATE(dim_dates[full_date]),
+        -30,
+        DAY
+    )
+)
