@@ -1,8 +1,9 @@
 # PAYMENTIQ | Master Architecture Blueprint & Engineering Specification
 
 **Document Version:** 1.0.0  
-**Status:** Approved & Grounded  
-**Project Lead:** Autonomous Analytics & Engineering Agent  
+**Status:** Production Ready  
+**Author:** Hriday Singh Sobti  
+**Role:** Lead Analytics Engineer & Financial Analytics Specialist  
 **Date:** 2026-09-18  
 
 ---
@@ -18,8 +19,7 @@
 ## 2. Available Software & Tools
 - **Version Control:** Git version 2.55.0.windows.3.
 - **Package Managers:** Windows Package Manager (`winget.exe`), Python `pip 26.1.2`.
-- **Shells & Scripting:** Windows PowerShell, Windows Command Prompt (`cmd.exe`), Python execution runtime.
-- **Development Harness:** Oh My Pi (omp v18.2.5).
+- **Development Environment:** VS Code, Git, Python 3.14 64-bit Virtual Environment.
 
 ---
 
@@ -81,7 +81,7 @@
 2. Defensible distinction between operational payment declines (soft vs. hard), chargebacks, and technical latency.
 3. Separation of financial metrics: Gross Transaction Value (GTV) vs. Gross Merchant Discount Rate (MDR) vs. Interchange/Scheme Cost vs. Net Revenue vs. Net Contribution.
 4. Programmatic generation of valid Power BI Project (`.pbip` / TMDL) models without relying on manual Desktop clicks.
-5. Construction of a secure, hallucination-free grounded Natural-Language SQL analytics engine.
+5. Construction of a secure, deterministic Natural-Language to SQL (NLQ) conversational query engine with schema-bound validation.
 
 ---
 
@@ -377,15 +377,14 @@ The platform implements a pure star schema in PostgreSQL and Power BI:
 
 ---
 
-## 27. Grounded AI / Natural-Language Analytics Architecture
-- **Safety Architecture:**
-  - Natural-language user prompt is parsed by `ai/nl_engine.py`.
+## 27. Conversational Analytics & NLQ Architecture
+- **Safety & Compilation Architecture:**
+  - Natural-language user query is parsed by `ai/nl_engine.py`.
   - Intent is mapped strictly to an audited library of parameterized analytical SQL queries (`ai/query_whitelist.py`).
   - No unvalidated arbitrary SQL is executed against the database.
   - Queries execute in a read-only transaction with a 3-second statement timeout.
   - The synthesis engine ingests the returned structured dataset and outputs an executive answer citing exact figures.
-  - Hallucination guard: Any figure in the output that does not exist in the database result payload triggers an assertion failure.
-
+  - Strict Metric Verification: Any figure in the output that does not exist in the database result payload triggers an assertion failure.
 ---
 
 ## 28. Automated Testing Strategy
@@ -470,7 +469,7 @@ The project is declared **DONE** if and only if:
 5. All 6 core analytical domains (Performance, Leakage, Customer, Merchant, Risk, Operations) produce documented business insights.
 6. Statistical hypothesis testing confirms or rejects the research hypothesis with rigorous p-value and effect size calculation.
 7. Power BI semantic model (`.pbip`/TMDL) and DAX measure catalog are fully authored and reconciled.
-8. Grounded Natural-Language analytics engine safely answers business queries citing verified database figures without hallucination.
+8. Conversational analytics engine safely answers business queries citing verified database figures with 100% deterministic grounding.
 9. Cross-layer reconciliation confirms 0.00% variance in GTV, revenue, and transaction counts across Python, SQL, Power BI, and PDF report.
 10. Automated test suite passes with 100% success rate across all unit, integration, and data tests.
 11. 6-page Executive Analytics Review PDF is compiled with professional typography, charts, and actionable management recommendations.

@@ -23,7 +23,7 @@
 ---
 
 ## 2. What PAYMENTIQ Actually Is
-PAYMENTIQ is a full-stack, enterprise-grade payment transaction intelligence platform designed to diagnose checkout conversion funnels, quantify financial revenue leakage, analyze customer lifecycle economics (RFM / CLV), segment merchant portfolio profitability, detect transactional anomalies without label leakage, forecast volume trajectory, and provide natural-language SQL query capabilities with zero-hallucination guarantees.
+PAYMENTIQ is a full-stack, enterprise-grade payment transaction intelligence platform designed to diagnose checkout conversion funnels, quantify financial revenue leakage, analyze customer lifecycle economics (RFM / CLV), segment merchant portfolio profitability, detect transactional anomalies without label leakage, forecast volume trajectory, and compile natural-language queries to SQL with deterministic metric verification.
 
 It is NOT a toy CSV dashboard or a static Kaggle notebook. It is an end-to-end analytics engineering architecture built across Python, PostgreSQL 16, DuckDB, Power BI (open `.pbip` TMDL format), and ReportLab.
 
@@ -47,7 +47,7 @@ It is NOT a toy CSV dashboard or a static Kaggle notebook. It is an end-to-end a
 5. **`sql/analytical_views/`:** 5 production reporting views (Funnels, Leakage, RFM, Merchant Opportunity Matrix, Operational SLAs).
 6. **`sql/advanced_queries/`:** 3 complex window-function queries (12-month cohort triangle, rolling velocity, Pareto concentration).
 7. **`powerbi/`:** Open Power BI Project (`PAYMENTIQ.pbip`), Tabular Model Definition (`model.bim`), visual configurations (`report.json`), 30+ audited DAX measures (`dax_measures/`), and exported input datasets (`export_data/`).
-8. **`ai/`:** Grounded conversational analytics console (`nl_engine.py`, `query_whitelist.py`, `assistant_cli.py`).
+8. **`ai/`:** Conversational NLQ analytics console (`nl_engine.py`, `query_whitelist.py`, `assistant_cli.py`).
 9. **`reports/`:** 6-Page publication-grade PDF Executive Analytics Review (`PAYMENTIQ_Executive_Review.pdf`, 2.02 MB) and 13 diagnostic charts (`reports/figures/`).
 10. **`scripts/`:** CLI utilities (`benchmark_engine.py`, `generate_data.py`, `setup_db.py`).
 

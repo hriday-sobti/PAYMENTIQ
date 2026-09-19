@@ -33,10 +33,10 @@
   - Two-Sample Proportion Z-Test         - Complete .pbip / TMDL Source
                  │                                      │
                  ▼                                      ▼
-  [ Grounded AI Console ] ─────────────> [ Executive Review PDF ]
+  [ Conversational NLQ Console ] ─────────> [ Executive Review PDF ]
   - Natural-Language "Ask PAYMENTIQ"     - 6-Page Publication Document
-  - AST-Validated SQL Whitelist          - Observation-Driver-Action
-  - Zero-Hallucination Grounding         - Embedded High-Res Figures
+  - AST-Validated SQL Compilation        - Observation-Driver-Action
+  - Deterministic Metric Verification    - Embedded High-Res Figures
 ```
 
 ---

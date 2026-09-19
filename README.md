@@ -29,7 +29,7 @@ PAYMENTIQ delivers an end-to-end analytical data platform spanning the entire in
 - **Advanced Analytical SQL:** Window-function cohort matrices, rolling payment velocity, and 80/20 Pareto concentration analysis.
 - **Machine Learning & Statistical Inference:** Unsupervised Isolation Forest anomaly detection, Holt-Winters exponential smoothing time-series forecasting, and two-sample proportion Z-testing.
 - **Power BI Decision Suite:** 6-page interactive business intelligence cockpit authored in open Power BI Project (`.pbip` / TMDL) format with an audited DAX library.
-- **Grounded Natural-Language Analytics:** "Ask PAYMENTIQ" conversational interface with AST query validation, strict SQL safety, and zero-hallucination metric grounding.
+- **Natural Language Query Engine (NLQ):** "Ask PAYMENTIQ" conversational analytics console with AST query compilation, parameterized SQL whitelisting, and verified metric grounding.
 - **Multi-Layer Reconciliation:** Verified 0.00% financial drift across all storage and reporting layers.
 
 <p align="center">
@@ -65,10 +65,10 @@ PAYMENTIQ delivers an end-to-end analytical data platform spanning the entire in
   - Two-Sample Proportion Z-Test         - Complete .pbip / TMDL Source
                  │                                      │
                  ▼                                      ▼
-  [ Grounded AI Console ] ─────────────> [ Executive Review PDF ]
+  [ Conversational NLQ Console ] ─────────> [ Executive Review PDF ]
   - Natural-Language "Ask PAYMENTIQ"     - 6-Page Publication Document
-  - AST-Validated SQL Whitelist          - Observation-Driver-Action
-  - Zero-Hallucination Grounding         - Embedded High-Res Figures
+  - AST-Validated SQL Compilation        - Observation-Driver-Action
+  - Deterministic Metric Verification    - Embedded High-Res Figures
 ```
 
 ---
@@ -86,7 +86,7 @@ PAYMENTIQ delivers an end-to-end analytical data platform spanning the entire in
 | **Visualization** | Matplotlib 3.11.2, Seaborn 0.13.2 | Diagnostic charts, correlation matrices, retention heatmaps |
 | **Business Intelligence**| Power BI Desktop (`.pbip`), DAX | 6-page interactive executive analytics suite, tabular modeling |
 | **Reporting & Docs** | ReportLab 5.0.1, Markdown | Publication-grade 6-page C-suite PDF report, exhaustive documentation |
-| **Testing & CI** | Pytest 9.1.1 | 39 automated unit, integration, and reconciliation tests |
+| **Testing & CI** | Pytest 9.1.1 | 197 automated unit, integration, and reconciliation tests |
 
 ---
 
@@ -261,12 +261,12 @@ The platform includes a complete, source-controlled Power BI Project ([`powerbi/
 
 ---
 
-## 8. Grounded AI Analytics: "Ask PAYMENTIQ"
+## 8. Conversational Analytics: "Ask PAYMENTIQ" (Natural Language to SQL)
 
-An interactive natural-language assistant ([`ai/assistant_cli.py`](ai/assistant_cli.py)) that connects directly to the data warehouse:
-- **Architecture:** User Question $\rightarrow$ Intent Mapping $\rightarrow$ AST Safety Verification $\rightarrow$ SQL Execution $\rightarrow$ Grounded Answer Synthesis.
+An interactive natural-language query interface ([`ai/assistant_cli.py`](ai/assistant_cli.py)) that compiles stakeholder business questions directly into validated data warehouse queries:
+- **Architecture:** Question Parsing $\rightarrow$ Intent Mapping $\rightarrow$ AST Safety Verification $\rightarrow$ SQL Execution $\rightarrow$ Data-Backed Synthesis.
 - **Security:** Strict read-only query whitelist ([`ai/query_whitelist.py`](ai/query_whitelist.py)); blocks SQL injection, comments, and modifying commands.
-- **Anti-Hallucination Guardrail:** Automated test suite asserts that every monetary figure and percentage cited in the synthesized text matches returned database rows verbatim.
+- **Deterministic Metric Verification:** Automated test suite asserts that every monetary figure and percentage cited in the synthesized text matches returned database rows verbatim.
 
 ```bash
 # Example Interactive CLI Session

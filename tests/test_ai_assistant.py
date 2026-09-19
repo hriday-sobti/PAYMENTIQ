@@ -1,7 +1,7 @@
 """
-PAYMENTIQ Unit and Integration Tests for Grounded AI Analytics ("Ask PAYMENTIQ")
+PAYMENTIQ Unit and Integration Tests for Conversational NLQ Analytics ("Ask PAYMENTIQ")
 Verifies intent classification across diverse business queries, AST safety validation
-against SQL injection attack vectors, and strict zero-hallucination grounding on returned database metrics.
+against SQL injection attack vectors, and strict deterministic metric verification on returned database records.
 """
 import pytest
 import re

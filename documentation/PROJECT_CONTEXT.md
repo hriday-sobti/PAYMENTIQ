@@ -40,4 +40,4 @@ PAYMENTIQ was engineered to solve these exact enterprise problems through an end
 6. **Time-Series Forecasting:** Holt-Winters Triple Exponential Smoothing forecasting volume and GTV 90 days forward with empirical prediction envelopes.
 7. **Inferential Statistics:** Two-Sample Proportion Z-Testing proving the commercial and statistical significance of 3DS authentication.
 8. **Business Intelligence:** Open-source Power BI Project (`.pbip` / TMDL) with 6 interactive pages and 30+ audited DAX measures.
-9. **Grounded AI Analytics:** Natural-language conversational interface backed by AST query validation and 100% zero-hallucination verification.
+9. **Conversational Analytics (NLQ):** Natural-language conversational interface backed by AST query compilation and verified metric grounding.

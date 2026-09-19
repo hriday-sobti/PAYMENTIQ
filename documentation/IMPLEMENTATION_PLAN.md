@@ -1,7 +1,7 @@
 # PAYMENTIQ | Phase-by-Phase Implementation Plan & Delivery Status
 
 **Document Version:** 1.0.0  
-**Methodology:** Phased Analytical Engineering & Autonomous Verification  
+**Methodology:** Phased Analytical Engineering & Test-Driven Development  
 **Total Phases:** 22 Sequential Engineering Phases  
 **Current Status:** 100% Complete & Reconciled  
 
@@ -28,8 +28,8 @@
 | **Phase 14** | Time-Series Forecasting | `forecasting.py`, Holt-Winters (Volume MAPE 1.53%), 90-day trajectory, `FORECASTING_REPORT.md` | **COMPLETE** |
 | **Phase 15** | Inferential Statistical Testing | `statistical_analysis.py`, Two-Sample Z-Test ($Z = 45.67, p < 1e-15$), `STATISTICAL_ANALYSIS.md` | **COMPLETE** |
 | **Phase 16** | Power BI Suite & DAX Library | `PAYMENTIQ.pbip`, `model.bim`, `report.json`, `dax_measures/`, `POWER_BI_SPECIFICATION.md` | **COMPLETE** |
-| **Phase 17** | Grounded Natural-Language AI | `ai/assistant_cli.py`, `ai/nl_engine.py`, `ai/query_whitelist.py`, zero-hallucination tests | **COMPLETE** |
+| **Phase 17** | Conversational Analytics & NLQ | `ai/assistant_cli.py`, `ai/nl_engine.py`, `ai/query_whitelist.py`, deterministic grounding tests | **COMPLETE** |
 | **Phase 18** | Multi-Layer Data Reconciliation | `reconciliation.py`, `RECONCILIATION_REPORT.md` (0.00% drift verified across 5 layers) | **COMPLETE** |
-| **Phase 19** | Comprehensive Automated Testing | `tests/` (40 automated tests across financial invariants, SQL, AI, and reconciliation) | **COMPLETE** |
+| **Phase 19** | Comprehensive Automated Testing | `tests/` (197 automated tests across financial invariants, SQL, ML models, and reconciliation) | **COMPLETE** |
 | **Phase 20** | Executive Review PDF Document | `reports/PAYMENTIQ_Executive_Review.pdf` (6-page C-suite briefing document via ReportLab) | **COMPLETE** |
 | **Phase 21** | Final Audit & Single-Command Runner | `run_all.py` (master 19-stage orchestrator), clean git working tree, flagship `README.md` | **COMPLETE** |
