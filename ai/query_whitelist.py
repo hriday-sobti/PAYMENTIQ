@@ -105,7 +105,7 @@ QUERY_CATALOG: Dict[str, Dict[str, Any]] = {
 }
 
 class SQLSafetyValidator:
-    """Validates that candidate SQL queries are strictly read-only and non-destructive."""
+    """Validates that analytical SQL queries are strictly read-only and non-destructive."""
 
     DANGEROUS_KEYWORDS = [
         r"\bDROP\b", r"\bDELETE\b", r"\bTRUNCATE\b", r"\bUPDATE\b",

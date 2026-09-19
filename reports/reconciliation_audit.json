@@ -1,5 +1,5 @@
 {
-  "audit_timestamp": "2026-09-19T14:53:38.538045",
+  "audit_timestamp": "2026-09-19T15:25:52.802376",
   "status": "PASS",
   "layers": {
     "Layer_1_Raw_Parquet": {
@@ -29,8 +29,8 @@
     "Layer_4_DuckDB_Analytics": {
       "row_count": 1000000,
       "gtv": 134531743.6900007,
-      "settled_gtv": 121120030.80000076,
-      "net_revenue": 803472.5999998597,
+      "settled_gtv": 121120030.80000074,
+      "net_revenue": 803472.5999998598,
       "approved_count": 911844,
       "chargeback_count": 1110
     },
@@ -68,7 +68,7 @@
       "Layer_1_Raw_Parquet": 121120030.8,
       "Layer_2_Clean_Parquet": 121120030.8,
       "Layer_3_PostgreSQL_DW": 121120030.8,
-      "Layer_4_DuckDB_Analytics": 121120030.80000076,
+      "Layer_4_DuckDB_Analytics": 121120030.80000074,
       "Layer_5_PowerBI_Model": 121120030.8
     },
     {
@@ -77,7 +77,7 @@
       "Layer_1_Raw_Parquet": 803472.5999999999,
       "Layer_2_Clean_Parquet": 803472.5999999999,
       "Layer_3_PostgreSQL_DW": 803472.6,
-      "Layer_4_DuckDB_Analytics": 803472.5999998597,
+      "Layer_4_DuckDB_Analytics": 803472.5999998598,
       "Layer_5_PowerBI_Model": 803472.6
     },
     {
