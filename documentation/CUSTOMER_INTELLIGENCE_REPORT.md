@@ -15,13 +15,13 @@ This report analyzes customer value distribution, repeat transaction cadence, be
 
 | RFM Segment | Cardholders | Customer Share (%) | Avg Recency (Days) | Avg Frequency | Avg Annual Spend ($) | Total GTV ($) | GTV Share (%) | Total Net Contribution ($) |
 |---|---|---|---|---|---|---|---|---|
-| **At Risk / Churn Alert** | 10,702 | 26.76% | 3.5 d | 45.7 | $6,195.65 | $66,305,804.26 | 54.74% | $347,625.71 |
-| **Loyal Customers** | 6,920 | 17.30% | 22.5 d | 21.7 | $3,031.60 | $20,978,655.18 | 17.32% | $116,978.99 |
-| **Standard Retail Active** | 8,052 | 20.13% | 15.1 d | 12.8 | $1,389.86 | $11,191,152.69 | 9.24% | $61,837.86 |
-| **Champions** | 2,209 | 5.52% | 31.1 d | 25.2 | $3,770.11 | $8,328,177.46 | 6.88% | $44,151.60 |
-| **New Active Customers** | 7,078 | 17.70% | 53.4 d | 8.9 | $893.38 | $6,323,369.88 | 5.22% | $31,965.12 |
-| **Recent High Spenders** | 2,397 | 5.99% | 48.7 d | 10.5 | $2,300.14 | $5,513,435.97 | 4.55% | $31,457.44 |
-| **Hibernating / Dormant** | 2,642 | 6.61% | 4.2 d | 9.5 | $938.47 | $2,479,435.36 | 2.05% | $13,038.92 |
+| **At Risk / Churn Alert** | 10,586 | 26.47% | 3.4 d | 46.1 | $6,245.20 | $66,111,671.57 | 54.58% | $346,182.56 |
+| **Loyal Customers** | 6,969 | 17.42% | 22.8 d | 21.6 | $3,009.30 | $20,971,802.07 | 17.31% | $117,551.96 |
+| **Standard Retail Active** | 8,188 | 20.47% | 15.7 d | 12.8 | $1,402.55 | $11,484,077.42 | 9.48% | $64,296.44 |
+| **Champions** | 2,259 | 5.65% | 31.1 d | 25.0 | $3,758.46 | $8,490,366.87 | 7.01% | $44,492.88 |
+| **New Active Customers** | 6,939 | 17.35% | 53.5 d | 8.8 | $887.49 | $6,158,292.30 | 5.08% | $30,602.18 |
+| **Recent High Spenders** | 2,301 | 5.75% | 48.5 d | 10.4 | $2,300.15 | $5,292,655.48 | 4.37% | $30,372.20 |
+| **Hibernating / Dormant** | 2,758 | 6.90% | 4.3 d | 9.6 | $946.76 | $2,611,165.09 | 2.16% | $13,557.42 |
 
 ---
 
@@ -29,13 +29,13 @@ This report analyzes customer value distribution, repeat transaction cadence, be
 
 | RFM Segment | Segment Size | Realized Historical Contribution ($) | Avg Annual Spend ($) | 24-Month Projected CLV ($) |
 |---|---|---|---|---|
-| At Risk / Churn Alert | 10,685 | $32.55 | $6,202.76 | **$60.23** |
-| Champions | 2,206 | $19.67 | $3,771.58 | **$36.39** |
-| Loyal Customers | 6,925 | $16.90 | $3,030.83 | **$31.26** |
-| Recent High Spenders | 2,413 | $13.25 | $2,295.89 | **$24.50** |
-| Standard Retail Active | 8,060 | $7.70 | $1,390.50 | **$14.24** |
-| Hibernating / Dormant | 2,653 | $4.93 | $937.90 | **$9.12** |
-| New Active Customers | 7,058 | $4.49 | $892.51 | **$8.31** |
+| At Risk / Churn Alert | 10,509 | $32.82 | $6,265.50 | **$60.72** |
+| Champions | 2,265 | $19.69 | $3,755.08 | **$36.42** |
+| Loyal Customers | 7,059 | $16.85 | $3,012.55 | **$31.17** |
+| Recent High Spenders | 2,195 | $13.17 | $2,296.04 | **$24.36** |
+| Standard Retail Active | 8,281 | $7.91 | $1,412.91 | **$14.63** |
+| Hibernating / Dormant | 2,867 | $5.02 | $955.72 | **$9.29** |
+| New Active Customers | 6,824 | $4.36 | $882.89 | **$8.07** |
 
 ---
 

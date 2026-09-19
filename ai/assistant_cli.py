@@ -12,8 +12,8 @@ def run_cli():
     args = parser.parse_args()
 
     if args.question:
-        prompt = " ".join(args.question)
-        res = assistant_engine.ask(prompt)
+        user_query = " ".join(args.question)
+        res = assistant_engine.ask(user_query)
         print("\n" + "="*70)
         print(f"QUESTION: {res['question']}")
         print(f"INTENT:   {res['intent']}")

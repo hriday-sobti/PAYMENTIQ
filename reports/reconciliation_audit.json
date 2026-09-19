@@ -1,5 +1,5 @@
 {
-  "audit_timestamp": "2026-09-19T14:10:09.778521",
+  "audit_timestamp": "2026-09-19T14:16:24.934079",
   "status": "PASS",
   "layers": {
     "Layer_1_Raw_Parquet": {
@@ -37,8 +37,8 @@
     "Layer_5_PowerBI_Model": {
       "row_count": 1000000,
       "gtv": 134531743.69,
-      "settled_gtv": 121120030.79999998,
-      "net_revenue": 803472.6000000001,
+      "settled_gtv": 121120030.8,
+      "net_revenue": 803472.6,
       "approved_count": 911844,
       "chargeback_count": 1110
     }
@@ -69,7 +69,7 @@
       "Layer_2_Clean_Parquet": 121120030.8,
       "Layer_3_PostgreSQL_DW": 121120030.8,
       "Layer_4_DuckDB_Analytics": 121120030.80000076,
-      "Layer_5_PowerBI_Model": 121120030.79999998
+      "Layer_5_PowerBI_Model": 121120030.8
     },
     {
       "metric": "net_revenue",
@@ -78,7 +78,7 @@
       "Layer_2_Clean_Parquet": 803472.5999999999,
       "Layer_3_PostgreSQL_DW": 803472.6,
       "Layer_4_DuckDB_Analytics": 803472.5999998597,
-      "Layer_5_PowerBI_Model": 803472.6000000001
+      "Layer_5_PowerBI_Model": 803472.6
     },
     {
       "metric": "approved_count",

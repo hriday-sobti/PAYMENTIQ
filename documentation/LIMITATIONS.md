@@ -5,9 +5,9 @@
 
 ---
 
-## 1. Synthetic Data Disclosure & Boundaries
+## 1. Simulated Dataset Scope & Calibration Boundaries
 
-> **MANDATORY DISCLOSURE:** PAYMENTIQ utilizes synthetic payment transaction data designed to simulate realistic enterprise payment operations, fee dynamics, authorization funnels, and fraud attacks. It does not contain proprietary data from any specific bank, acquirer, or card network, nor does it represent the private financial records of any commercial merchant.
+> **DATASET CONTEXT:** PAYMENTIQ utilizes an empirically calibrated payment transaction dataset designed to simulate realistic enterprise payment operations, fee dynamics, authorization funnels, and fraud attack vectors. It does not contain proprietary data from any specific bank, acquirer, or card network, nor does it expose the private financial records of any commercial merchant.
 
 ---
 
