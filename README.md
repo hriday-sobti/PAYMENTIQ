@@ -410,19 +410,7 @@ Open [`powerbi/PAYMENTIQ.pbip`](powerbi/PAYMENTIQ.pbip) directly in Power BI Des
 
 ---
 
-## 12. Resume-Ready Alignment
-
-```text
-• Engineered an end-to-end payment analytics platform processing 1M+ transactional records using Python, PostgreSQL, and DuckDB to model fee economics, payment failures, and transaction value at risk (TVaR) across 16 documented KPIs.
-
-• Developed customer RFM segmentation, 12-month cohort retention matrices, and a 4-Quadrant Merchant Opportunity Matrix, identifying $103K+ in recoverable revenue leakage from retryable soft declines.
-
-• Designed an interactive 6-page Power BI executive suite (.pbip/TMDL) and a grounded AI analytics assistant with verified 0.00% cross-platform financial reconciliation and 197 automated CI tests.
-```
-
----
-
-## 13. License & Authorship
+## 12. License & Authorship
 - **Author:** PAYMENTIQ Analytics Engineering
 - **License:** MIT License — See `LICENSE` for details.
 - **Disclosure:** Synthetic data generated for benchmarking and analytical portfolio demonstration.
