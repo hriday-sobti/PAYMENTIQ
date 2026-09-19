@@ -43,5 +43,5 @@ Thumbs.db
 .idea/
 *.swp
 
-# Private candidate evidence dossier (retained locally, excluded from public repo)
+# Local documentation notes
 documentation/PAYMENTIQ_FINAL_EVIDENCE_DOSSIER.md
