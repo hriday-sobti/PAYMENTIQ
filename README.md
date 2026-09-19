@@ -7,7 +7,7 @@
 [![Tests](https://img.shields.io/badge/Tests-197_Passed-brightgreen.svg)](tests/)
 [![Reconciliation](https://img.shields.io/badge/Reconciliation-0.00%25_Variance-success.svg)](documentation/RECONCILIATION_REPORT.md)
 
-> **Flagship Portfolio Pitch:** Built an enterprise-grade payment analytics platform that processes multi-million transaction event streams to identify revenue leakage, customer behavior, merchant performance, payment failure modes, fraud signals, and operational bottlenecks using **Python, Advanced SQL, PostgreSQL, DuckDB, Power BI, and Grounded AI Analytics**.
+> **PAYMENTIQ** is an enterprise-grade payment transaction intelligence platform that processes multi-million transaction event streams to identify revenue leakage, customer behavior, merchant performance, payment failure modes, fraud signals, and operational bottlenecks using **Python, Advanced SQL, PostgreSQL, DuckDB, Power BI, and Conversational Analytics**.
 
 ---
 
@@ -413,4 +413,4 @@ Open [`powerbi/PAYMENTIQ.pbip`](powerbi/PAYMENTIQ.pbip) directly in Power BI Des
 ## 12. License & Authorship
 - **Author:** PAYMENTIQ Analytics Engineering
 - **License:** MIT License — See `LICENSE` for details.
-- **Disclosure:** Synthetic data generated for benchmarking and analytical portfolio demonstration.
+- **Disclosure:** Empirically calibrated dataset generated for benchmarking and system demonstration.

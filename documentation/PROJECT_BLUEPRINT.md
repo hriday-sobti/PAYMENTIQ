@@ -233,7 +233,7 @@ The platform implements a pure star schema in PostgreSQL and Power BI:
 - **Multi-Scale Tiers:**
   - `DEV`: 100,000 transactions (for rapid feature iteration and fast test cycles).
   - `TEST`: 1,000,000 transactions (for performance profiling and regression testing).
-  - `FULL`: 5,000,000+ transactions (for portfolio demonstration and final benchmarks).
+  - `FULL`: 5,000,000+ transactions (for high-throughput stress testing and final benchmarks).
 - **Behavioral Realism:**
   - Log-normal transaction amounts calibrated by Merchant Category Code (e.g. Grocery: $\mu=\$45, \sigma=0.6$; Luxury Goods: $\mu=\$350, \sigma=1.2$).
   - Diurnal and weekly temporal cycles (peak volume 12:00–14:00 and 18:00–21:00; weekend surges for Hospitality/Dining).
@@ -429,7 +429,7 @@ The platform implements a pure star schema in PostgreSQL and Power BI:
 ---
 
 ## 32. GitHub Presentation Strategy
-- Production-grade public portfolio structure:
+- Production-grade repository presentation:
   - Clean, informative README with executive architecture diagrams, KPI highlights, sample screenshots, and exact reproduction instructions.
   - Git history with semantic, descriptive commits for each phase.
   - Zero large binary files tracked (clean repo size $< 25 \text{ MB}$).
