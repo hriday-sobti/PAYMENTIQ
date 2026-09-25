@@ -9,9 +9,9 @@
 
 ---
 
-## 📄 Executive Analytics Review (6-Page Publication Briefing)
+## 📄 Executive Analytics Review (6-Page Briefing)
 👉 **[View the PAYMENTIQ Executive Analytics Review (PDF)](./reports/PAYMENTIQ_Executive_Review.pdf)**  
-*A high-resolution 6-page C-suite document detailing checkout attrition funnels, fee economics, customer/merchant segmentation, and prioritized commercial action plans.*
+*A publication-grade 6-page C-suite document detailing checkout attrition funnels, fee economics, customer/merchant segmentation, and prioritized commercial action plans.*
 
 ---
 
@@ -26,6 +26,15 @@
 
 ---
 
+### Executive Performance Scorecard (2024 Full Year)
+
+| Total Volume Analyzed | Gross Transaction Value | Settled Volume (STV) | Net Retained Revenue | Net Operating Contribution | Tested & Reconciled |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| **1,000,000 Attempts** | **$134.53M GTV** | **$121.12M STV** | **$803.47K (66.3 bps)** | **80.53% ($647.06K)** | **197 Tests Passed (0.00% Drift)** |
+
+---
+
+> [!NOTE]
 > **PAYMENTIQ** is an enterprise-grade payment transaction intelligence platform that processes multi-million transaction event streams to identify revenue leakage, customer behavior, merchant performance, payment failure modes, fraud signals, and operational bottlenecks using **Python, Advanced SQL, PostgreSQL, DuckDB, Power BI, and Conversational Analytics**.
 
 ---
@@ -33,7 +42,7 @@
 ## 1. Executive Summary & Business Problem
 
 ### The Challenge
-A global payments facilitator processes millions of commercial card and alternative payment transactions monthly. Executive leadership requires an integrated, reproducible analytics platform to answer:
+A global payments facilitator processes millions of commercial card and alternative payment transactions monthly. Executive leadership requires an integrated, reproducible analytics platform to answer five core questions:
 1. **What is happening?** What is our top-line transactional throughput, conversion funnel, and retained margin?
 2. **Where is value leaking?** How much Gross Transaction Value (GTV) is lost to authorization failures, and what portion is addressable via smart retry logic?
 3. **Who matters most?** Which customer segments drive the majority of long-term economic value (CLV), and which merchants represent portfolio concentration risk?
@@ -43,11 +52,12 @@ A global payments facilitator processes millions of commercial card and alternat
 ### The Core Finding
 In 2024, the platform processed **1,000,000 transaction attempts**, representing **$134,531,743.69 in Gross Transaction Value (GTV)**. Of this demand, **$121,120,030.80 successfully converted to settled funds** (911,844 approvals), delivering an overall platform **authorization rate of 91.18%** and **$803,472.60 in Net Retained Revenue**.
 
-However, forensic decomposition reveals that **$13,411,712.89 in Gross Transaction Value failed or was declined at checkout** (Transaction Value at Risk, or TVaR). Crucially, 68.5% ($9.19M) of this uncaptured volume stems from **addressable soft declines**—specifically insufficient funds and temporary gateway timeouts. By deploying automated, balance-aware smart retry routing, the business has an empirical, addressable opportunity to recapture **+$103,334.06 in incremental net revenue** ($4.13M settled GTV).
+> [!IMPORTANT]
+> **Key Financial Discovery:** Forensic decomposition reveals that **$13,411,712.89 in Gross Transaction Value failed or was declined at checkout** (Transaction Value at Risk, or TVaR). Crucially, **68.5% ($9.19M) of this uncaptured volume stems from addressable soft declines** (insufficient funds, temporary gateway timeouts) rather than terminal cardholder insolvency. Deploying automated, balance-aware smart retry routing provides an addressable opportunity to recapture **+$103,334.06 in incremental net revenue** ($4.13M settled GTV).
 
 <p align="center">
   <img src="reports/figures/eda_monthly_volume_trend.png" width="720" alt="2024 Monthly Volume & Net Revenue Trend" />
-  <br/><em>Figure: 2024 Monthly Settled Volume ($M) and Net Retained Revenue ($K) Trajectory</em>
+  <br/><em>Figure 1: 2024 Monthly Settled Volume ($M) and Net Retained Revenue ($K) Trajectory</em>
 </p>
 
 ---
@@ -239,6 +249,7 @@ The platform includes a complete, source-controlled Power BI Project ([`powerbi/
 - **Key Question:** What concrete initiatives should leadership fund to capture the highest return on investment?
 - **Key Visuals:** 3 Top Action Cards with Dollar Impact, Prioritized Operational Action Backlog Table.
 - **Executive Takeaway:** Deploying smart retries (+$103K), mandating 3DS (+342 bps auth lift), and migrating Margin Drag contracts (+$45K) deliver an aggregate **+$170K+ in measurable commercial value**.
+
 ---
 
 ## 7. Connected Analytical Deep-Dives (Chart-by-Chart Analysis)

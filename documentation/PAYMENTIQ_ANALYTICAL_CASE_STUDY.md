@@ -42,7 +42,7 @@ Traditional payment analytics in many mid-market fintechs and merchants relies o
 | **Threat Detection** | Retrospective fraud rules after chargebacks clear (60-day lag). | Unsupervised Isolation Forest model (PR-AUC = 0.502) detecting card-testing attacks without label leakage. | Flags micro-transaction bot attacks in real time, preventing processor fee penalties. |
 | **Statistical Rigor** | Intuitive assumptions regarding authentication friction. | Formal Two-Sample Pooled Proportion Z-Test ($Z = 45.67, p < 10^{-15}$) comparing 3DS vs. non-3DS rails. | Proves a verified +342 bps authorization lift for 3DS transactions, shifting chargeback liability. |
 | **Forecasting** | Linear extrapolation or static budget targets. | Holt-Winters Triple Exponential Smoothing (additive trend + 7-day seasonality) with 80/20 temporal backtesting. | Highly accurate Q1 2025 projection (Volume MAPE 1.53%, GTV MAPE 3.25%). |
-| **Stakeholder Access** | Static slide decks requiring manual analyst updates. | 6-page interactive Power BI Project (`.pbip`) + AST-validated natural-language query console (`Ask PAYMENTIQ`). | Democratizes ad-hoc query capabilities with verified zero-hallucination grounding. |
+| **Stakeholder Access** | Static slide decks requiring manual analyst updates. | 6-page interactive Power BI Project (`.pbip`) + AST-validated natural-language query console (`Ask PAYMENTIQ`). | Democratizes ad-hoc query capabilities with verified deterministic metric verification. |
 
 ---
 
