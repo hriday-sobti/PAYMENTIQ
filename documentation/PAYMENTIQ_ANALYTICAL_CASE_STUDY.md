@@ -46,10 +46,10 @@ Traditional payment analytics in many mid-market fintechs and merchants relies o
 
 ---
 
-## Connected Analytical Narrative & Chart-by-Chart Deep Dives
+## Connected Analytical Narrative and Chart-by-Chart Deep Dives
 
 The analytical investigation unfolds through a logical business sequence:
-$$\text{Overall Performance} \longrightarrow \text{Conversion Funnel} \longrightarrow \text{Financial Exposure} \longrightarrow \text{Customer Concentration} \longrightarrow \text{Merchant Opportunity} \longrightarrow \text{Risk \& Anomalies} \longrightarrow \text{Operational RCA} \longrightarrow \text{Forward Projections}$$
+$$\text{Overall Performance} \longrightarrow \text{Conversion Funnel} \longrightarrow \text{Financial Exposure} \longrightarrow \text{Customer Concentration} \longrightarrow \text{Merchant Opportunity} \longrightarrow \text{Risk and Anomalies} \longrightarrow \text{Operational RCA} \longrightarrow \text{Forward Projections}$$
 
 ---
 

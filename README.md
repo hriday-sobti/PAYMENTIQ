@@ -252,10 +252,10 @@ The platform includes a complete, source-controlled Power BI Project ([`powerbi/
 
 ---
 
-## 7. Connected Analytical Deep-Dives (Chart-by-Chart Analysis)
+## 7. Connected Analytical Narrative and Chart-by-Chart Deep Dives
 
 The analytical investigation unfolds as a continuous business investigation:
-$$\text{Overall Performance} \longrightarrow \text{Conversion Funnel} \longrightarrow \text{Financial Exposure} \longrightarrow \text{Customer Concentration} \longrightarrow \text{Merchant Opportunity} \longrightarrow \text{Risk \& Anomalies} \longrightarrow \text{Operational RCA} \longrightarrow \text{Forward Projections}$$
+$$\text{Overall Performance} \longrightarrow \text{Conversion Funnel} \longrightarrow \text{Financial Exposure} \longrightarrow \text{Customer Concentration} \longrightarrow \text{Merchant Opportunity} \longrightarrow \text{Risk and Anomalies} \longrightarrow \text{Operational RCA} \longrightarrow \text{Forward Projections}$$
 
 ---
 
