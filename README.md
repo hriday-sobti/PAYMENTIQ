@@ -181,13 +181,64 @@ All metrics strictly obey the centralized contracts defined in [`config/kpi_defi
 
 The platform includes a complete, source-controlled Power BI Project ([`powerbi/PAYMENTIQ.pbip`](powerbi/PAYMENTIQ.pbip)) containing the Tabular Model Definition ([`model.bim`](powerbi/PAYMENTIQ.Dataset/model.bim)), report visual configurations ([`report.json`](powerbi/PAYMENTIQ.Report/report.json)), and pre-computed datasets in [`powerbi/export_data/`](powerbi/export_data/):
 
-1. **Page 1: Executive Overview:** High-level strategic cockpit with KPI cards, 12-month volume/revenue trajectory, category volume share, and regional conversion scorecards.
-2. **Page 2: Payment Performance:** Authorization conversion funnel (`Initiated` $\rightarrow$ `Gateway` $\rightarrow$ `Authorized` $\rightarrow$ `Retained`), rail conversion scorecards, and hierarchical drilldowns (`Country` $\rightarrow$ `Category` $\rightarrow$ `Method` $\rightarrow$ `Device`).
-3. **Page 3: Customer Intelligence:** RFM segment concentration, 12-month cohort retention triangle heatmap, and customer lifetime value deciles.
-4. **Page 4: Merchant Intelligence:** 4-Quadrant Merchant Opportunity Matrix scatter visual, margin distribution, and card scheme dispute monitoring table.
-5. **Page 5: Risk & Anomaly Monitoring:** Composite risk score distribution (0–1000), chargeback basis points by category, and prioritized anomaly review queue.
-6. **Page 6: Management Action Center:** "WHAT SHOULD MANAGEMENT INVESTIGATE?" prioritized commercial and technical action cards with dollar-denominated impacts.
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                   PAYMENTIQ POWER BI 6-PAGE EXECUTIVE SUITE                 │
+├──────────────────────┬──────────────────────┬───────────────────────────────┤
+│ Page 1: Executive    │ Page 2: Payment      │ Page 3: Customer              │
+│ Overview             │ Performance          │ Intelligence                  │
+│ - KPI Metric Cards   │ - Conversion Funnel  │ - RFM Segment Distribution    │
+│ - Monthly Trajectory │ - Rail Auth Matrix   │ - 12-Month Cohort Triangle    │
+│ - Regional Scorecard │ - Decline Donut      │ - CLV Spend vs Contribution   │
+├──────────────────────┼──────────────────────┼───────────────────────────────┤
+│ Page 4: Merchant     │ Page 5: Risk &       │ Page 6: Management           │
+│ Intelligence         │ Anomaly Monitoring   │ Action Center                 │
+│ - 4-Quadrant Matrix  │ - Risk Score (0-1000)│ - Prioritized Action Cards    │
+│ - Margin Drag Table  │ - Dispute Rate BPS   │ - Dollar-Denominated Impact   │
+│ - Scheme Compliance  │ - Anomaly Review List│ - Operational Action Backlog  │
+└──────────────────────┴──────────────────────┴───────────────────────────────┘
+```
 
+### Page 1: Executive Overview
+- **Purpose:** Macro-level performance cockpit for senior leadership (CEO, CFO, Head of Payments).
+- **Key Question:** Are top-line volume, conversion efficiency, and retained margins meeting strategic targets?
+- **Key KPIs:** Gross Transaction Value ($134.5M), Settled STV ($121.1M), Authorization Rate (91.18%), Net Revenue ($803.5K), Contribution Margin (80.53%).
+- **Key Visuals:** 5 Top KPI Cards, 12-Month Volume/Revenue Combo Trajectory, Regional Conversion Table.
+- **Executive Takeaway:** Overall financial yield is outperforming plan (+118 bps auth rate, +253 bps margin), but geographic variance highlights European corridor volatility.
+
+### Page 2: Payment Performance
+- **Purpose:** Diagnostic routing and conversion analysis for Payment Operations and Engineering.
+- **Key Question:** Where in the payment lifecycle are transactions dropping, and which rails perform best?
+- **Key KPIs:** Total Attempts (1M), Gateway Success (99.87%), Approval Rate (91.18%), Average Latency (201 ms).
+- **Key Visuals:** 4-Stage Horizontal Funnel, Grouped Rail Conversion Chart, Decline Code Donut Visual, Hierarchical Matrix Drilldown (`Country` $\rightarrow$ `Category` $\rightarrow$ `Method` $\rightarrow$ `Device`).
+- **Executive Takeaway:** Modern tokenized rails (Apple Pay, Google Pay, A2A) deliver up to 96% authorization, while legacy Card-Not-Present credit card checkouts suffer 11.2% decline rates.
+
+### Page 3: Customer Intelligence
+- **Purpose:** Customer lifecycle economics and cohort recurrence tracking for CRM and Growth Marketing.
+- **Key Question:** Who are our most valuable cardholders, and how quickly do newly acquired cohorts churn?
+- **Key KPIs:** Active Cardholders (40,000), Top-2 Tier Contribution Share (61.2%), Month-1 Retention (42.1%), Steady-State Retention (19.8%).
+- **Key Visuals:** RFM Segment Volume Contribution Bar Chart, 12-Month Cohort Retention Triangle Heatmap, Customer Spend vs. Contribution Scatter Plot, At-Risk Customer Grid.
+- **Executive Takeaway:** 28.1% of cardholders generate 61.2% of platform net contribution; priority re-engagement should target the 16.4% "At Risk" tier before Day 90 dormancy sets in.
+
+### Page 4: Merchant Intelligence
+- **Purpose:** Portfolio yield optimization and card scheme compliance monitoring for Merchant Business Development.
+- **Key Question:** Which merchants drive healthy margins versus which accounts erode profitability or exceed dispute thresholds?
+- **Key KPIs:** Portfolio HHI (44.3), Core Anchors (482), Margin Drag (118), Portfolio Dispute Ratio (12.17 bps).
+- **Key Visuals:** 4-Quadrant Opportunity Matrix Scatter Plot, Quadrant GTV Share Donut, Merchant Compliance Scorecard Table.
+- **Executive Takeaway:** Contract restructuring on 118 Margin Drag merchants captures +$45K in annual contribution; zero merchants currently breach the critical 100 bps card scheme chargeback limit.
+
+### Page 5: Risk & Anomaly Monitoring
+- **Purpose:** Real-time threat surveillance and fraud risk analysis for Fraud Operations and Risk Management.
+- **Key Question:** Where are abnormal velocity spikes, bot attacks, and high-risk chargeback clusters emerging?
+- **Key KPIs:** Flagged Anomalies (1.80% / 4,500 txs), Mean Risk Score (214), High-Risk Transactions (1,840 txs), Realized Chargeback Losses ($134.2K).
+- **Key Visuals:** Composite Risk Score Histogram (0–1000), Category Chargeback BPS Ranking Bar Chart, Priority Anomaly Review Grid.
+- **Executive Takeaway:** Digital Goods (`MCC 5999`) accounts for the highest dispute exposure (95 bps); Isolation Forest successfully flags bot card-testing attacks without disrupting genuine shoppers.
+
+### Page 6: Management Action Center ("WHAT SHOULD MANAGEMENT INVESTIGATE?")
+- **Purpose:** Decision support engine translating analytical findings directly into prioritized operational and commercial actions.
+- **Key Question:** What concrete initiatives should leadership fund to capture the highest return on investment?
+- **Key Visuals:** 3 Top Action Cards with Dollar Impact, Prioritized Operational Action Backlog Table.
+- **Executive Takeaway:** Deploying smart retries (+$103K), mandating 3DS (+342 bps auth lift), and migrating Margin Drag contracts (+$45K) deliver an aggregate **+$170K+ in measurable commercial value**.
 ---
 
 ## 7. Connected Analytical Deep-Dives (Chart-by-Chart Analysis)
